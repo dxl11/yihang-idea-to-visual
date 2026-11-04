@@ -1,10 +1,11 @@
-# Idea to Visual (Yihang Idea to Visual)
+# Yihang Idea to Visual
 
 English | [简体中文](README.md)
 
 **Skill id:** `yihang-idea-to-visual`  
-**Product name:** Idea to Visual / Yihang Idea to Visual  
-**GitHub repository name:** `idea-to-visual` (keep as-is unless you intentionally rename the remote)
+**Display name:** Yihang Idea to Visual  
+**Product:** Idea to Visual — AI personal-IP image/text creation skill  
+**GitHub:** [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
 
 Start from a raw idea. Through staged confirmations, organize thinking, polish the article, craft titles, design a cover, paginate editorial graphics, review visuals, and deliver ordered cover/body PNGs plus a ZIP package ready for social publishing.
 
@@ -12,32 +13,128 @@ This repository ships **one** [Agent Skill](https://agentskills.io/specification
 
 ---
 
-## 1. Introduction
+## 1. Project name and introduction
 
-Yihang Idea to Visual productizes the personal-IP content pipeline: you focus on thinking and expression; the same skill handles editing, design, layout, and packaging. Project-level install path:
+**Yihang Idea to Visual** productizes the personal-IP content pipeline: you focus on thinking and expression; the same skill handles editing, design, layout, and packaging.
+
+Canonical skill entry in this repository:
 
 ```text
 .agents/skills/yihang-idea-to-visual/SKILL.md
 ```
 
-Cursor discovers skills under `.agents/skills/` automatically. You can also invoke `/yihang-idea-to-visual` in Agent chat.
-
-## 2. Product positioning
+## 2. Core positioning
 
 Built for creators, researchers, and operators who publish branded carousels. Each project selects **one** platform and **one** canvas size, then exports an upload-ready image set.
 
-## 3. Feature highlights
+Core promise: you stay in thinking and expression; the skill owns editing, design, typography, and delivery.
+
+## 3. Core features
 
 - Six gated stages (article → title → cover → editorial → review → export)
-- **Locked-article integrity protection** (no silent rewrite/summary/deletion)
+- Locked-article integrity protection (no silent rewrite/summary/deletion)
 - Platform profiles separated from skill instructions
 - Visual reference indexing, contact sheets, multi-reference trait remixing
 - Three brand layers: long-term identity / lasting preferences / per-project style
 - Pillow-based precise typography (split from generative imagery)
-- Resumable project state under `.idea-to-visual/projects/`
+- Resumable private project state under `.idea-to-visual/projects/`
 - Ordered ZIP delivery with automated validation
 
-## 4. End-to-end workflow
+## 4. One-command install
+
+Use the official [Vercel Skills CLI](https://github.com/vercel-labs/skills) via `npx skills`. **Do not** manually download or copy `SKILL.md`.
+
+### Requirements
+
+- Node.js **22.20** or later
+- npm
+- npx
+- Cursor
+
+Check your environment:
+
+```bash
+node -v
+npm -v
+```
+
+### Cursor project install (recommended for teams)
+
+```bash
+npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor
+```
+
+Installs into the current project only—ideal for collaboration.
+
+### Cursor global install
+
+```bash
+npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor -g
+```
+
+Installs into the user-global skills directory for use across projects.
+
+### List installable skills in the repository
+
+```bash
+npx skills add dxl11/yihang-idea-to-visual --list
+```
+
+### Non-interactive install (CI / scripts)
+
+```bash
+npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor -y
+```
+
+Local source discovery (maintainers):
+
+```bash
+npx skills add . --list
+```
+
+## 5. Cursor project vs global install
+
+| Scope | Flag | Typical path |
+|---|---|---|
+| Project | omit `-g` | `./.agents/skills/yihang-idea-to-visual/` |
+| Global | `-g` | `~/.cursor/skills/yihang-idea-to-visual/` |
+
+A successful install includes `references/`, `scripts/`, `schemas/`, and `assets/` (visual reference library + brand samples). Relative paths remain valid after install.
+
+Cursor project installs land in `.agents/skills/`—**do not** also hand-copy into `.cursor/skills/`.
+
+### List installed skills
+
+```bash
+npx skills list
+```
+
+Filter to Cursor:
+
+```bash
+npx skills ls -a cursor
+```
+
+### Verify installation
+
+1. Confirm `.agents/skills/yihang-idea-to-visual/SKILL.md` exists (project) or the matching global Cursor skills folder.  
+2. Frontmatter `name` is `yihang-idea-to-visual`.  
+3. `references/`, `scripts/`, `schemas/`, and `assets/` are present.  
+4. In Cursor Agent chat, run `/yihang-idea-to-visual` or ask to turn notes into a carousel.
+
+### After install: how to use
+
+1. Open the project (or any project, if globally installed) in Cursor.  
+2. Invoke `/yihang-idea-to-visual` or describe your creative request.  
+3. Confirm each stage; the agent may run bundled Python helpers (Python 3.10+ and Pillow recommended).
+
+Optional helper dependency:
+
+```bash
+python -m pip install "Pillow>=10"
+```
+
+## 6. Full creative workflow
 
 1. **STEP 01 — Thought organization & polish** — Preserve stance and voice; lock on confirmation.  
 2. **STEP 02 — Titles** — Offer five meaningfully different directions from the locked article.  
@@ -46,12 +143,102 @@ Built for creators, researchers, and operators who publish branded carousels. Ea
 5. **STEP 05 — Review** — Thumbnails; single/multi/global edits; copy changes require returning to STEP 01.  
 6. **STEP 06 — QA & delivery** — Validate, then emit `00-cover.png`, `01-page.png`, … and `final-export.zip`.
 
-Do not skip unconfirmed stages. New chats must resume from `state.json`.
+Do not skip unconfirmed stages. New chats must resume from project `state.json`.
 
-## 5. Repository layout
+## 7. Visual reference library
+
+Path: `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
+
+- Accepts PNG / JPG / JPEG / WEBP and other common rasters  
+- Store by category; keep private files under `private/` (gitignored)  
+- Index with `scripts/build_reference_index.py`  
+- Contact sheets via `scripts/create_contact_sheet.py`  
+- Unknown-license images: internal analysis only—never default to public redistribution  
+
+See [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
+
+## 8. Personal brand visual system
+
+Three layers—never conflate them:
+
+1. **Long-term brand identity** — stable recognition rules  
+2. **Personal visual preferences** — lasting taste; update only with explicit consent  
+3. **Project design profile** — per-work variation  
+
+Sample: [brand-profile.sample.json](.agents/skills/yihang-idea-to-visual/assets/brand-kit/brand-profile.sample.json)  
+Real logos/preferences go in `assets/brand-kit/private/` (not committed). Missing brand names must not invent a fake identity—continue with neutral design.
+
+## 9. Usage examples
 
 ```text
-idea-to-visual/
+User: Use Yihang Idea to Visual to turn these notes into a Xiaohongshu carousel.
+AI: Enter STEP 01, polish the article → lock → ask whether to continue to titles…
+```
+
+Platform profiles: [profiles.json](.agents/skills/yihang-idea-to-visual/assets/platform-profiles/profiles.json)
+
+```bash
+python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py --help
+python .agents/skills/yihang-idea-to-visual/scripts/render_pages.py --list-templates
+python .agents/skills/yihang-idea-to-visual/scripts/validate_project.py --help
+python .agents/skills/yihang-idea-to-visual/scripts/package_export.py --help
+```
+
+## 10. Update and uninstall
+
+### Check for updates
+
+```bash
+npx skills check
+```
+
+### Update project skill
+
+```bash
+npx skills update yihang-idea-to-visual
+```
+
+### Update global skill
+
+```bash
+npx skills update yihang-idea-to-visual -g
+```
+
+### Uninstall project skill
+
+```bash
+npx skills remove yihang-idea-to-visual -a cursor
+```
+
+### Uninstall global skill
+
+```bash
+npx skills remove yihang-idea-to-visual -a cursor -g
+```
+
+> Commands follow the current Skills CLI. If the CLI changes, defer to [commands.md](https://github.com/vercel-labs/skills/blob/main/docs/commands.md).
+
+### Install FAQ
+
+**Q: `npx skills` complains about Node version?**  
+Upgrade to Node.js 22.20+.
+
+**Q: Cursor does not show the skill?**  
+Confirm `-a cursor`, reload Cursor / reopen the project, and verify `.agents/skills/yihang-idea-to-visual/SKILL.md` (project scope).
+
+**Q: Do I need to copy files by hand?**  
+No. Always use `npx skills add ...`.
+
+**Q: Will I get duplicate skill copies?**  
+Cursor project installs use `.agents/skills/`. Do not also manually copy into `.cursor/skills/`.
+
+**Q: Garbled Chinese in rendered PNGs?**  
+Point `cjk_font_path` at an installed, licensed font. Missing fonts fail loudly instead of emitting mojibake.
+
+## 11. Repository layout
+
+```text
+yihang-idea-to-visual/
 ├── README.md / README.en.md
 ├── LICENSE / ASSET-LICENSES.md / CONTRIBUTING.md / CHANGELOG.md
 ├── pyproject.toml / .gitignore
@@ -66,148 +253,9 @@ idea-to-visual/
 └── tests/
 ```
 
-Keep private project data in `.idea-to-visual/projects/` (gitignored).
+Keep private project data under `.idea-to-visual/projects/` (gitignored).
 
-## 6. Installation
-
-```bash
-git clone <your-fork-or-repo-url> idea-to-visual
-cd idea-to-visual
-python -m pip install -e ".[dev]"
-```
-
-Requires Python 3.10+ and Pillow. Dev/CI also use pytest and jsonschema.
-
-## 7. Using in Cursor
-
-1. Open this repository root in Cursor.  
-2. Cursor discovers `.agents/skills/yihang-idea-to-visual/`.  
-3. Describe your idea in Agent chat, or type `/yihang-idea-to-visual`.  
-4. Confirm stage by stage; the agent runs helper scripts when needed.
-
-Note: Cursor also loads `.cursor/skills/`. This project maintains **only** the `.agents/skills/` copy to avoid duplication.
-
-For a user-global install, copy the skill folder to `~/.agents/skills/yihang-idea-to-visual/` or `~/.cursor/skills/yihang-idea-to-visual/`.
-
-## 8. Other Agent Skills hosts
-
-Any tool that follows [agentskills.io](https://agentskills.io/specification) generally needs:
-
-1. The `yihang-idea-to-visual` folder on its skill discovery path  
-2. Frontmatter `name` matching the directory name  
-3. Python + Pillow for scripts  
-
-If Claude Code / Codex scan `.claude/skills` or `.codex/skills`, copy the same folder there (keep a single source of truth).
-
-## 9. Uploading visual references
-
-Place images under:
-
-`.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/<category>/`
-
-Categories: `editorial`, `minimalism`, `technology`, `artistic`, `infographic`, `photography`, `typography`, `miscellaneous`. Private files go in `private/` (ignored).
-
-See [assets/visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
-
-## 10. Indexing references
-
-```bash
-python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py \
-  --library .agents/skills/yihang-idea-to-visual/assets/visual-reference-library \
-  --output .agents/skills/yihang-idea-to-visual/assets/visual-reference-library/catalog.json
-```
-
-The indexer extracts technical metadata and duplicates. Design-language analysis must be done by an AI that can read pixels—never fake it from filenames alone.
-
-Contact sheets:
-
-```bash
-python .agents/skills/yihang-idea-to-visual/scripts/create_contact_sheet.py \
-  --library .agents/skills/yihang-idea-to-visual/assets/visual-reference-library \
-  --output contact-sheets \
-  --category editorial
-```
-
-## 11. Personal brand kit
-
-Starter sample:
-
-[brand-profile.sample.json](.agents/skills/yihang-idea-to-visual/assets/brand-kit/brand-profile.sample.json)
-
-Store real logos/preferences in `assets/brand-kit/private/` (gitignored). Missing brand names must not invent a fake identity—continue with neutral design.
-
-Long-term preference updates require explicit user consent.
-
-## 12. Platform configuration
-
-Edit [profiles.json](.agents/skills/yihang-idea-to-visual/assets/platform-profiles/profiles.json). One platform per project. Size entries include `source` and `verified_at`. If unverifiable, do not present them as freshly confirmed official rules.
-
-## 13. Image generation dependencies
-
-This skill is **not** an image API. Use host image tools for illustration/backgrounds only when they truly exist; otherwise fall back to programmatic graphics + local references/templates and disclose the limit.
-
-Never send a full Chinese article to an image model for final typography. Titles and body copy are rendered by `render_pages.py`.
-
-## 14. CJK font configuration
-
-Set `typography.cjk_font_path` in brand/design profiles to an installed, license-permitted font. Missing fonts must fail loudly—never emit mojibake silently.
-
-Do not bundle commercial fonts in this repository.
-
-## 15. Helper scripts
-
-| Script | Purpose |
-|---|---|
-| `scripts/build_reference_index.py` | Reference catalog |
-| `scripts/create_contact_sheet.py` | Contact sheets |
-| `scripts/render_pages.py` | JSON → PNG layout |
-| `scripts/validate_project.py` | Project QA incl. article integrity |
-| `scripts/package_export.py` | Ordered naming + ZIP |
-
-Every script supports `--help`.
-
-## 16. Final PNG & ZIP delivery
-
-```text
-export/<project-name>/
-  00-cover.png
-  01-page.png
-  02-page.png
-  ...
-final-export.zip
-```
-
-Run `validate_project.py` before calling a deliverable final. Failing checks must not be marked complete.
-
-## 17. Copyright & privacy
-
-- Code & docs: MIT ([LICENSE](LICENSE))  
-- Images/fonts/logos: [ASSET-LICENSES.md](ASSET-LICENSES.md)  
-- User articles, private references, and private brand kits stay out of GitHub by default  
-- Unknown-license references: internal analysis only—not public redistribution
-
-## 18. FAQ
-
-**Q: Skill not discovered?**  
-Open the repository root and confirm `.agents/skills/yihang-idea-to-visual/SKILL.md` exists.
-
-**Q: Multi-size export in one run?**  
-No. One platform, one canvas per project.
-
-**Q: No image generator available?**  
-Copy, titles, and structured typography PNGs still work; illustration layers degrade with an explicit capability note.
-
-**Q: Is the old id `idea-to-visual` still valid?**  
-Use Idea to Visual as the product name; the **skill id must be** `yihang-idea-to-visual`.
-
-## 19. Current limitations
-
-- No bundled cloud image API keys  
-- Platform sizes are configurable defaults—verify against official sources when needed  
-- Semantic reference analysis depends on host vision capability  
-- CJK quality depends on local fonts
-
-## 20. Contributing
+## 12. Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Before opening a PR:
 
@@ -215,12 +263,23 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Before opening a PR:
 python -m pytest
 ```
 
+Improvements to docs, platform profiles, scripts, and tests are welcome. Keep the skill id `yihang-idea-to-visual` and never commit private user content.
+
+## 13. Copyright and privacy
+
+- Code & docs: MIT ([LICENSE](LICENSE))  
+- Images / fonts / logos: [ASSET-LICENSES.md](ASSET-LICENSES.md)  
+- Do not commit private articles, private references, private brand kits, API keys, tokens, or credentials  
+- Do not bundle unauthorized third-party fonts or images  
+- Unknown-license references: internal analysis only  
+
+### Current limitations
+
+- No bundled cloud image API  
+- Platform sizes are configurable defaults—verify against official sources when needed  
+- Semantic reference analysis depends on host vision capability  
+- CJK rendering quality depends on local fonts  
+
 ---
 
-## Acceptance snapshot
-
-- [x] Single skill: `yihang-idea-to-visual`
-- [x] Standard `SKILL.md` + references
-- [x] Five runnable scripts + tests
-- [x] Bilingual README
-- [x] LICENSE / ASSET-LICENSES / gitignore / CI
+Repository: [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)

@@ -2,6 +2,13 @@
 
 Thank you for contributing to **Yihang Idea to Visual** (Skill id: `yihang-idea-to-visual`).
 
+## Repository
+
+- GitHub: https://github.com/dxl11/yihang-idea-to-visual
+- Skill id: `yihang-idea-to-visual`
+- Install (Cursor project):  
+  `npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor`
+
 ## Ground rules
 
 1. This repository publishes **one Skill**, not multiple skills, not an agent team, not a web app.
@@ -10,6 +17,8 @@ Thank you for contributing to **Yihang Idea to Visual** (Skill id: `yihang-idea-
 4. Do not commit private articles, private brand kits, or unknown-license images.
 5. Do not bundle commercial fonts.
 6. Prefer fixes that keep scripts CLI-friendly (`--help` required).
+7. Do not invent a custom installer; distribution uses the official Skills CLI (`npx skills`).
+8. Keep Chinese and English README install commands identical and free of placeholders.
 
 ## Development setup
 

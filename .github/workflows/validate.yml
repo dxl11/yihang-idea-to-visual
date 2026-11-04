@@ -8,7 +8,7 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,48 +18,39 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.20"
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e ".[dev]"
-          # Optional CJK font for rendering tests on Linux CI
           sudo apt-get update
           sudo apt-get install -y fonts-noto-cjk || true
 
-      - name: Python syntax check
-        run: |
-          python -m compileall -q .agents/skills/yihang-idea-to-visual/scripts tests scripts
-
-      - name: Skill structure & unit tests
-        run: python -m pytest
-
-      - name: JSON Schema validation
+      - name: Skill Frontmatter and naming
         run: |
           python - <<'PY'
-          import json
+          import re
           from pathlib import Path
-          from jsonschema import Draft202012Validator
-
-          root = Path(".agents/skills/yihang-idea-to-visual")
-          schemas = {
-              "brand": root / "schemas/brand-profile.schema.json",
-              "state": root / "schemas/project-state.schema.json",
-              "design": root / "schemas/design-profile.schema.json",
-              "manifest": root / "schemas/page-manifest.schema.json",
-          }
-          for name, path in schemas.items():
-              Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
-              print("schema ok", name)
-
-          brand = json.loads((root / "assets/brand-kit/brand-profile.sample.json").read_text(encoding="utf-8"))
-          Draft202012Validator(json.loads(schemas["brand"].read_text(encoding="utf-8"))).validate(brand)
-
-          state = json.loads((root / "assets/templates/project-template/state.json").read_text(encoding="utf-8"))
-          Draft202012Validator(json.loads(schemas["state"].read_text(encoding="utf-8"))).validate(state)
-          print("sample documents validate")
+          skill = Path(".agents/skills/yihang-idea-to-visual/SKILL.md")
+          assert skill.is_file(), "SKILL.md missing"
+          text = skill.read_text(encoding="utf-8")
+          assert text.startswith("---\n"), "missing YAML frontmatter"
+          end = text.find("\n---\n", 4)
+          assert end != -1, "frontmatter not closed"
+          block = text[4:end]
+          assert re.search(r"^name:\s*yihang-idea-to-visual\s*$", block, re.M), "name must be yihang-idea-to-visual"
+          assert re.search(r"^description:\s*", block, re.M), "description required"
+          assert Path(".agents/skills/yihang-idea-to-visual").name == "yihang-idea-to-visual"
+          assert not Path(".cursor/skills/yihang-idea-to-visual").exists(), "do not duplicate under .cursor/skills"
+          assert len(text.splitlines()) < 500, "SKILL.md must stay under 500 lines"
+          print("frontmatter + naming ok")
           PY
 
-      - name: Resource reference check
+      - name: File reference integrity
         run: |
           python - <<'PY'
           import re
@@ -67,22 +58,62 @@ jobs:
 
           skill = Path(".agents/skills/yihang-idea-to-visual")
           text = (skill / "SKILL.md").read_text(encoding="utf-8")
-          # markdown links relative to skill root
           missing = []
           for match in re.finditer(r"\[[^\]]+\]\(([^)]+)\)", text):
               target = match.group(1).strip()
               if target.startswith("http") or target.startswith("#"):
                   continue
-              # strip anchors
               target = target.split("#", 1)[0]
               if not target:
                   continue
-              path = (skill / target).resolve()
-              if not path.exists():
+              if not (skill / target).exists():
                   missing.append(target)
           if missing:
               raise SystemExit(f"Missing SKILL.md references: {missing}")
-          print("SKILL.md local references ok")
+
+          required = [
+              "references",
+              "scripts",
+              "schemas",
+              "assets/visual-reference-library",
+              "assets/brand-kit",
+              "assets/platform-profiles/profiles.json",
+          ]
+          for rel in required:
+              path = skill / rel
+              assert path.exists(), f"missing required skill path: {rel}"
+          print("skill resource integrity ok")
+          PY
+
+      - name: Chinese and English README checks
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          cn = Path("README.md").read_text(encoding="utf-8")
+          en = Path("README.en.md").read_text(encoding="utf-8")
+          assert "[English](README.en.md)" in cn
+          assert "[简体中文](README.md)" in en
+          assert "https://github.com/dxl11/yihang-idea-to-visual" in cn
+          assert "https://github.com/dxl11/yihang-idea-to-visual" in en
+          cmds = [
+              "npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor",
+              "npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor -g",
+              "npx skills add dxl11/yihang-idea-to-visual --list",
+              "npx skills list",
+              "npx skills ls -a cursor",
+              "npx skills check",
+              "npx skills update yihang-idea-to-visual",
+              "npx skills update yihang-idea-to-visual -g",
+              "npx skills remove yihang-idea-to-visual -a cursor",
+              "npx skills remove yihang-idea-to-visual -a cursor -g",
+          ]
+          for cmd in cmds:
+              assert cmd in cn, cmd
+              assert cmd in en, cmd
+          for bad in ("GITHUB_OWNER", "example/idea-to-visual", "your-fork-or-repo-url"):
+              assert bad not in cn and bad not in en, bad
+          print("README bilingual install docs ok")
           PY
 
       - name: Local README link check
@@ -112,8 +143,87 @@ jobs:
           print("README local links ok")
           PY
 
+      - name: Private and sensitive path guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path(".")
+          banned_globs = [
+              ".idea-to-visual/**",
+              "**/.env",
+              "**/credentials.json",
+              "**/*secret*",
+              "**/*apikey*",
+              "**/brand-kit/private/**",
+              "**/visual-reference-library/private/**",
+          ]
+          # Ensure gitignored private dirs are not tracked content committed accidentally
+          # by checking for common sensitive filenames under the skill tree.
+          suspicious = []
+          for path in root.rglob("*"):
+              if not path.is_file():
+                  continue
+              rel = path.as_posix()
+              if any(part in rel for part in (".git/", ".pytest_cache/", "__pycache__/")):
+                  continue
+              name = path.name.lower()
+              if name in {".env", "credentials.json", "secrets.json", "id_rsa"}:
+                  suspicious.append(rel)
+              if name.endswith(".pem") or name.endswith(".key"):
+                  suspicious.append(rel)
+              if "/private/" in rel and "visual-reference-library/private/.gitkeep" not in rel:
+                  # private dirs should stay empty of real assets in public commits
+                  if path.suffix.lower() in {".png", ".jpg", ".jpeg", ".webp", ".gif", ".pdf"}:
+                      suspicious.append(rel)
+          if suspicious:
+              raise SystemExit(f"Sensitive/private files must not be committed: {suspicious}")
+          ignore = Path(".gitignore").read_text(encoding="utf-8")
+          for needle in (".idea-to-visual/", "brand-kit/private/", "visual-reference-library/private/", ".env"):
+              assert needle in ignore, f".gitignore missing {needle}"
+          print("private/sensitive guard ok")
+          PY
+
+      - name: Python syntax check
+        run: |
+          python -m compileall -q .agents/skills/yihang-idea-to-visual/scripts tests scripts
+
+      - name: JSON Schema validation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          root = Path(".agents/skills/yihang-idea-to-visual")
+          schemas = {
+              "brand": root / "schemas/brand-profile.schema.json",
+              "state": root / "schemas/project-state.schema.json",
+              "design": root / "schemas/design-profile.schema.json",
+              "manifest": root / "schemas/page-manifest.schema.json",
+          }
+          for name, path in schemas.items():
+              Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
+              print("schema ok", name)
+
+          brand = json.loads((root / "assets/brand-kit/brand-profile.sample.json").read_text(encoding="utf-8"))
+          Draft202012Validator(json.loads(schemas["brand"].read_text(encoding="utf-8"))).validate(brand)
+
+          state = json.loads((root / "assets/templates/project-template/state.json").read_text(encoding="utf-8"))
+          Draft202012Validator(json.loads(schemas["state"].read_text(encoding="utf-8"))).validate(state)
+          print("sample documents validate")
+          PY
+
+      - name: Unit tests
+        run: python -m pytest
+
       - name: Script --help smoke
         run: |
           for s in build_reference_index create_contact_sheet render_pages validate_project package_export; do
             python .agents/skills/yihang-idea-to-visual/scripts/$s.py --help >/dev/null
           done
+
+      - name: Skills CLI local discovery
+        run: |
+          npx --yes skills@1.7.6 add . --list | tee /tmp/skills-list.txt
+          grep -q "yihang-idea-to-visual" /tmp/skills-list.txt

@@ -5,6 +5,17 @@ All notable changes to **Idea to Visual** / Skill `yihang-idea-to-visual` are do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — 2026-03-25
+
+### Added
+- Official one-command install docs via Vercel Skills CLI (`npx skills`).
+- Bilingual install / update / uninstall / verify sections aligned with https://github.com/dxl11/yihang-idea-to-visual.
+- CI checks for install command consistency, README bilingual presence, and private/sensitive path safeguards.
+
+### Changed
+- Canonical GitHub repository URL set to `https://github.com/dxl11/yihang-idea-to-visual`.
+- README section order reorganized for distribution and onboarding.
+
 ## [1.0.0] — 2026-03-25
 
 ### Added

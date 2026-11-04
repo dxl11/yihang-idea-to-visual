@@ -49,6 +49,9 @@ Desktop.ini
 *.local.json
 *.local.yaml
 
+# Skills CLI consumer lockfile (this repo is the skill source, not a consumer)
+skills-lock.json
+
 # Private brand kits and personal preferences
 .agents/skills/yihang-idea-to-visual/assets/brand-kit/private/
 .agents/skills/yihang-idea-to-visual/assets/brand-kit/*.local.json

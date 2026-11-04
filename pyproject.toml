@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yihang-idea-to-visual"
-version = "1.0.0"
+version = "1.1.0"
 description = "Yihang Idea to Visual — Agent Skill that turns raw ideas into branded social media image carousels."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -42,9 +42,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/example/idea-to-visual"
-Documentation = "https://github.com/example/idea-to-visual#readme"
-Issues = "https://github.com/example/idea-to-visual/issues"
+Homepage = "https://github.com/dxl11/yihang-idea-to-visual"
+Documentation = "https://github.com/dxl11/yihang-idea-to-visual#readme"
+Issues = "https://github.com/dxl11/yihang-idea-to-visual/issues"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
