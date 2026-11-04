@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "skill_id": "yihang-idea-to-visual",
+  "notes": "Configured defaults for design planning. When network access is available, prefer verifying against official platform docs before claiming sizes as current official rules. unverified entries must not be presented as freshly confirmed official specs.",
+  "profiles": [
+    {
+      "id": "xiaohongshu",
+      "label": "小红书 / Xiaohongshu",
+      "width": 1080,
+      "height": 1440,
+      "aspect_ratio": "3:4",
+      "notes": "Common portrait carousel canvas used by many creators.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "wechat_mp_cover",
+      "label": "微信公众号 / WeChat Official Account",
+      "width": 900,
+      "height": 383,
+      "aspect_ratio": "900:383",
+      "notes": "Cover-oriented ratio often used for MP header imagery; body carousels may still use a square/portrait custom choice via custom profile.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "wechat_moments",
+      "label": "微信朋友圈 / WeChat Moments",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1:1",
+      "notes": "Square default for Moments multi-image posts.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "douyin_carousel",
+      "label": "抖音图文 / Douyin Image Post",
+      "width": 1080,
+      "height": 1440,
+      "aspect_ratio": "3:4",
+      "notes": "Portrait default for image/text posts.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "weibo",
+      "label": "微博 / Weibo",
+      "width": 1080,
+      "height": 1440,
+      "aspect_ratio": "3:4",
+      "notes": "Portrait multi-image default; landscape also common via custom.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "instagram_portrait",
+      "label": "Instagram",
+      "width": 1080,
+      "height": 1350,
+      "aspect_ratio": "4:5",
+      "notes": "Common 4:5 portrait feed size.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1:1",
+      "notes": "Square carousel-friendly default.",
+      "source": "community-common-practice",
+      "verified_at": "2026-03-01",
+      "verification_status": "configured-default"
+    },
+    {
+      "id": "custom",
+      "label": "自定义尺寸 / Custom",
+      "width": null,
+      "height": null,
+      "aspect_ratio": "custom",
+      "notes": "Require positive integer width and height from the user.",
+      "source": "user",
+      "verified_at": null,
+      "verification_status": "user-provided"
+    }
+  ]
+}

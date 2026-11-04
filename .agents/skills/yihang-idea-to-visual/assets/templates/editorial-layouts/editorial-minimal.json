@@ -1,0 +1,39 @@
+{
+  "template_id": "editorial-minimal",
+  "canvas": { "width": 1080, "height": 1440 },
+  "colors": {
+    "background": "#F7F5F1",
+    "text": "#1A1A1A",
+    "primary": "#1F4B99",
+    "secondary": "#6B7C93"
+  },
+  "typography": {
+    "cjk_font_path": null,
+    "title_size": 42,
+    "body_size": 34,
+    "caption_size": 22,
+    "line_spacing": 1.45
+  },
+  "layout": { "margin": 108, "image_area": "none" },
+  "text_blocks": [
+    {
+      "text": "章节标题",
+      "x": 108,
+      "y": 180,
+      "size": 42,
+      "max_width": 864,
+      "bottom_limit": 280
+    },
+    {
+      "text": "正文内容占位。排版引擎负责精确中文换行与溢出检查。",
+      "x": 108,
+      "y": 320,
+      "size": 34,
+      "max_width": 864,
+      "bottom_limit": 1260
+    }
+  ],
+  "shapes": [],
+  "images": [],
+  "folio": { "text": "01", "x": 960, "y": 1340 }
+}

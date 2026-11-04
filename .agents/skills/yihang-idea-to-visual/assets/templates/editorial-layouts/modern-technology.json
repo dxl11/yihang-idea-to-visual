@@ -1,0 +1,46 @@
+{
+  "template_id": "modern-technology",
+  "canvas": { "width": 1080, "height": 1440 },
+  "colors": {
+    "background": "#0B1C2C",
+    "text": "#E8F6FF",
+    "primary": "#3DE0FF",
+    "secondary": "#1F4B99"
+  },
+  "typography": {
+    "cjk_font_path": null,
+    "title_size": 40,
+    "body_size": 32,
+    "caption_size": 20,
+    "line_spacing": 1.4
+  },
+  "layout": { "margin": 88, "image_area": "top" },
+  "text_blocks": [
+    {
+      "text": "TECH NOTE",
+      "x": 120,
+      "y": 520,
+      "size": 24,
+      "color": "#3DE0FF",
+      "max_width": 800,
+      "bottom_limit": 580
+    },
+    {
+      "text": "科技主题正文：侧栏结构与顶部视觉区区分于极简编辑风。",
+      "x": 120,
+      "y": 600,
+      "size": 32,
+      "max_width": 840,
+      "bottom_limit": 1280
+    }
+  ],
+  "shapes": [
+    {
+      "type": "rect",
+      "box": [88, 120, 992, 420],
+      "fill": "#12324A"
+    }
+  ],
+  "images": [],
+  "folio": { "text": "02", "x": 960, "y": 1340 }
+}

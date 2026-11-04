@@ -1,0 +1,39 @@
+{
+  "template_id": "editorial-minimal",
+  "canvas": { "width": 1080, "height": 1440 },
+  "colors": {
+    "background": "#F7F5F1",
+    "text": "#1A1A1A",
+    "primary": "#1F4B99",
+    "secondary": "#6B7C93"
+  },
+  "typography": {
+    "cjk_font_path": null,
+    "title_size": 64,
+    "body_size": 28,
+    "caption_size": 22,
+    "line_spacing": 1.3
+  },
+  "layout": { "margin": 96 },
+  "text_blocks": [
+    {
+      "text": "示例封面标题",
+      "x": 96,
+      "y": 220,
+      "size": 64,
+      "max_width": 888,
+      "bottom_limit": 700
+    },
+    {
+      "text": "作者署名",
+      "x": 96,
+      "y": 1280,
+      "size": 28,
+      "max_width": 500,
+      "bottom_limit": 1360
+    }
+  ],
+  "shapes": [],
+  "images": [],
+  "folio": { "text": "", "x": 96, "y": 1360 }
+}

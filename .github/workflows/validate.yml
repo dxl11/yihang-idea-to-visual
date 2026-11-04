@@ -1,0 +1,119 @@
+name: validate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          # Optional CJK font for rendering tests on Linux CI
+          sudo apt-get update
+          sudo apt-get install -y fonts-noto-cjk || true
+
+      - name: Python syntax check
+        run: |
+          python -m compileall -q .agents/skills/yihang-idea-to-visual/scripts tests scripts
+
+      - name: Skill structure & unit tests
+        run: python -m pytest
+
+      - name: JSON Schema validation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+
+          root = Path(".agents/skills/yihang-idea-to-visual")
+          schemas = {
+              "brand": root / "schemas/brand-profile.schema.json",
+              "state": root / "schemas/project-state.schema.json",
+              "design": root / "schemas/design-profile.schema.json",
+              "manifest": root / "schemas/page-manifest.schema.json",
+          }
+          for name, path in schemas.items():
+              Draft202012Validator.check_schema(json.loads(path.read_text(encoding="utf-8")))
+              print("schema ok", name)
+
+          brand = json.loads((root / "assets/brand-kit/brand-profile.sample.json").read_text(encoding="utf-8"))
+          Draft202012Validator(json.loads(schemas["brand"].read_text(encoding="utf-8"))).validate(brand)
+
+          state = json.loads((root / "assets/templates/project-template/state.json").read_text(encoding="utf-8"))
+          Draft202012Validator(json.loads(schemas["state"].read_text(encoding="utf-8"))).validate(state)
+          print("sample documents validate")
+          PY
+
+      - name: Resource reference check
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          skill = Path(".agents/skills/yihang-idea-to-visual")
+          text = (skill / "SKILL.md").read_text(encoding="utf-8")
+          # markdown links relative to skill root
+          missing = []
+          for match in re.finditer(r"\[[^\]]+\]\(([^)]+)\)", text):
+              target = match.group(1).strip()
+              if target.startswith("http") or target.startswith("#"):
+                  continue
+              # strip anchors
+              target = target.split("#", 1)[0]
+              if not target:
+                  continue
+              path = (skill / target).resolve()
+              if not path.exists():
+                  missing.append(target)
+          if missing:
+              raise SystemExit(f"Missing SKILL.md references: {missing}")
+          print("SKILL.md local references ok")
+          PY
+
+      - name: Local README link check
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          def check(readme: Path):
+              text = readme.read_text(encoding="utf-8")
+              missing = []
+              for match in re.finditer(r"\[[^\]]+\]\((?!https?://)([^)]+)\)", text):
+                  target = match.group(1).strip()
+                  if target.startswith("#") or target.startswith("mailto:"):
+                      continue
+                  target = target.split("#", 1)[0]
+                  if not target or " " in target:
+                      continue
+                  path = (readme.parent / target).resolve()
+                  if not path.exists():
+                      missing.append((str(readme), target))
+              return missing
+
+          missing = check(Path("README.md")) + check(Path("README.en.md"))
+          if missing:
+              raise SystemExit(f"Broken local README links: {missing}")
+          print("README local links ok")
+          PY
+
+      - name: Script --help smoke
+        run: |
+          for s in build_reference_index create_contact_sheet render_pages validate_project package_export; do
+            python .agents/skills/yihang-idea-to-visual/scripts/$s.py --help >/dev/null
+          done

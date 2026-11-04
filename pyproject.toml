@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yihang-idea-to-visual"
+version = "1.0.0"
+description = "Yihang Idea to Visual — Agent Skill that turns raw ideas into branded social media image carousels."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Yihang Idea to Visual Contributors" }
+]
+keywords = [
+  "agent-skills",
+  "cursor",
+  "content-creation",
+  "personal-branding",
+  "editorial-design",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Multimedia :: Graphics",
+]
+dependencies = [
+  "Pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "jsonschema>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/example/idea-to-visual"
+Documentation = "https://github.com/example/idea-to-visual#readme"
+Issues = "https://github.com/example/idea-to-visual/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [
+  ".agents/skills/yihang-idea-to-visual/scripts",
+]
+addopts = "-q"
+
+[tool.setuptools]
+packages = []

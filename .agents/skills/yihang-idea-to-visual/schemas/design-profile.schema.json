@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yihang.local/schemas/design-profile.schema.json",
+  "title": "DesignProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile_type", "template_id", "canvas", "colors", "typography", "layout"],
+  "properties": {
+    "profile_type": {
+      "type": "string",
+      "enum": ["cover", "editorial"]
+    },
+    "template_id": {
+      "type": "string",
+      "enum": [
+        "editorial-minimal",
+        "modern-technology",
+        "artistic-journal",
+        "custom"
+      ]
+    },
+    "style_label": { "type": "string" },
+    "canvas": {
+      "type": "object",
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "colors": {
+      "type": "object",
+      "required": ["background", "text", "primary"],
+      "properties": {
+        "background": { "type": "string" },
+        "text": { "type": "string" },
+        "primary": { "type": "string" },
+        "secondary": { "type": "string" },
+        "accent": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "typography": {
+      "type": "object",
+      "required": ["cjk_font_path"],
+      "properties": {
+        "cjk_font_path": { "type": ["string", "null"] },
+        "latin_font_path": { "type": ["string", "null"] },
+        "title_size": { "type": "number" },
+        "body_size": { "type": "number" },
+        "caption_size": { "type": "number" },
+        "line_spacing": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "required": ["margin"],
+      "properties": {
+        "margin": { "type": "number" },
+        "content_width_ratio": { "type": "number" },
+        "image_area": {
+          "type": "string",
+          "enum": ["none", "top", "bottom", "side", "background"]
+        },
+        "folio_format": { "type": "string" },
+        "signature_format": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "reference_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" }
+  }
+}

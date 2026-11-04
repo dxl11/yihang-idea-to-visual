@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Local project data (private user content)
+.idea-to-visual/
+*.local.json
+*.local.yaml
+
+# Private brand kits and personal preferences
+.agents/skills/yihang-idea-to-visual/assets/brand-kit/private/
+.agents/skills/yihang-idea-to-visual/assets/brand-kit/*.local.json
+brand-kit.private/
+preferences.private.json
+
+# Private visual references (keep public samples only)
+.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/private/
+**/visual-reference-library/**/*.private.*
+**/visual-reference-library/**/private/
+
+# Generated outputs and caches
+**/output/
+**/export/
+**/previews/
+!examples/**/previews/
+!examples/**/output/
+.cache/
+tmp/
+temp/
+*.tmp
+contact-sheets/
+index.cache.json
+
+# Fonts that must not be redistributed
+fonts/private/
+*.otf.private
+*.ttf.private
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+
+# Test artifacts
+tests/artifacts/
+tests/_tmp/

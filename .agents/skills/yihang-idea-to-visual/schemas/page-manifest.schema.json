@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yihang.local/schemas/page-manifest.schema.json",
+  "title": "PageManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project_name", "article_version", "pages"],
+  "properties": {
+    "project_name": { "type": "string" },
+    "article_version": { "type": "string" },
+    "article_path": { "type": "string" },
+    "canvas": {
+      "type": "object",
+      "properties": {
+        "width": { "type": "integer" },
+        "height": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["index", "role", "output_file"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 0 },
+          "role": {
+            "type": "string",
+            "enum": ["cover", "body"]
+          },
+          "output_file": { "type": "string" },
+          "design_json": { "type": "string" },
+          "text_fragments": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Contiguous locked-article fragments in reading order for this page. Cover may be empty."
+          },
+          "page_number": { "type": ["integer", "null"] },
+          "overflow_flags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

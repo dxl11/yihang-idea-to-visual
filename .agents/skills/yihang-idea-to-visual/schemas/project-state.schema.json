@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yihang.local/schemas/project-state.schema.json",
+  "title": "ProjectState",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project_name", "skill_id", "status", "updated_at"],
+  "properties": {
+    "project_name": { "type": "string", "minLength": 1 },
+    "skill_id": {
+      "type": "string",
+      "const": "yihang-idea-to-visual"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "article_review",
+        "article_locked",
+        "title_review",
+        "title_locked",
+        "platform_selected",
+        "cover_preview",
+        "cover_locked",
+        "editorial_preview",
+        "editorial_locked",
+        "pages_generated",
+        "review",
+        "finalized",
+        "exported"
+      ]
+    },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "article_version": { "type": ["string", "null"] },
+    "title_version": { "type": ["string", "null"] },
+    "platform_id": { "type": ["string", "null"] },
+    "canvas": {
+      "type": ["object", "null"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "locks": {
+      "type": "object",
+      "properties": {
+        "article": { "type": "boolean" },
+        "title": { "type": "boolean" },
+        "cover": { "type": "boolean" },
+        "editorial": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yihang.local/schemas/brand-profile.schema.json",
+  "title": "BrandProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "layer", "colors", "typography"],
+  "properties": {
+    "version": { "type": "string" },
+    "layer": {
+      "type": "string",
+      "enum": ["brand_identity", "visual_preferences", "project_snapshot"]
+    },
+    "brand_name": { "type": ["string", "null"] },
+    "author_signature": { "type": ["string", "null"] },
+    "logo_path": { "type": ["string", "null"] },
+    "wordmark": { "type": ["string", "null"] },
+    "colors": {
+      "type": "object",
+      "required": ["primary", "secondary", "background", "text"],
+      "properties": {
+        "primary": { "type": "string" },
+        "secondary": { "type": "string" },
+        "background": { "type": "string" },
+        "text": { "type": "string" },
+        "accent": { "type": "string" },
+        "muted": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "typography": {
+      "type": "object",
+      "required": ["cjk_font_path", "latin_font_path"],
+      "properties": {
+        "cjk_font_path": { "type": ["string", "null"] },
+        "latin_font_path": { "type": ["string", "null"] },
+        "fallback_font_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hierarchy": {
+          "type": "object",
+          "properties": {
+            "display": { "type": "number" },
+            "title": { "type": "number" },
+            "body": { "type": "number" },
+            "caption": { "type": "number" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "layout": {
+      "type": "object",
+      "properties": {
+        "margin": { "type": "number" },
+        "grid_columns": { "type": "integer", "minimum": 1 },
+        "gutter": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "cover_rules": { "type": "object" },
+    "body_rules": { "type": "object" },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "favorite_styles": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "avoid": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "usage_notes": { "type": "string" }
+  }
+}

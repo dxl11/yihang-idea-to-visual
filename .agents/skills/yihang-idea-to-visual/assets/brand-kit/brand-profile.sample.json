@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "layer": "brand_identity",
+  "brand_name": null,
+  "author_signature": null,
+  "logo_path": null,
+  "wordmark": null,
+  "colors": {
+    "primary": "#1F4B99",
+    "secondary": "#6B7C93",
+    "background": "#F7F5F1",
+    "text": "#1A1A1A",
+    "accent": "#C45C26",
+    "muted": "#B8B2A7"
+  },
+  "typography": {
+    "cjk_font_path": null,
+    "latin_font_path": null,
+    "fallback_font_paths": [],
+    "hierarchy": {
+      "display": 72,
+      "title": 48,
+      "body": 32,
+      "caption": 22
+    }
+  },
+  "layout": {
+    "margin": 96,
+    "grid_columns": 6,
+    "gutter": 24
+  },
+  "cover_rules": {
+    "max_title_lines": 3,
+    "prefer_type_led": true
+  },
+  "body_rules": {
+    "max_chars_per_page_hint": 280,
+    "folio_required": true
+  },
+  "preferences": {
+    "favorite_styles": ["editorial-minimal"],
+    "avoid": [],
+    "notes": "Neutral sample only. Replace with private brand kit locally."
+  },
+  "usage_notes": "This sample is intentionally untitled. Do not invent a brand name."
+}

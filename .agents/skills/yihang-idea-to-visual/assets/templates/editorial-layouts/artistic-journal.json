@@ -1,0 +1,45 @@
+{
+  "template_id": "artistic-journal",
+  "canvas": { "width": 1080, "height": 1440 },
+  "colors": {
+    "background": "#F7EDE3",
+    "text": "#3B2A22",
+    "primary": "#C45C26",
+    "secondary": "#8C6A4F"
+  },
+  "typography": {
+    "cjk_font_path": null,
+    "title_size": 44,
+    "body_size": 33,
+    "caption_size": 20,
+    "line_spacing": 1.5
+  },
+  "layout": { "margin": 120, "image_area": "bottom" },
+  "text_blocks": [
+    {
+      "text": "手记",
+      "x": 120,
+      "y": 220,
+      "size": 44,
+      "max_width": 800,
+      "bottom_limit": 320
+    },
+    {
+      "text": "艺术手记风强调更大留白、角标装饰，以及底部视觉呼吸区。",
+      "x": 120,
+      "y": 360,
+      "size": 33,
+      "max_width": 780,
+      "bottom_limit": 980
+    }
+  ],
+  "shapes": [
+    {
+      "type": "ellipse",
+      "box": [160, 1040, 520, 1320],
+      "fill": "#E7C7B0"
+    }
+  ],
+  "images": [],
+  "folio": { "text": "03", "x": 120, "y": 1340 }
+}
