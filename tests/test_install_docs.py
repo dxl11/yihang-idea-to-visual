@@ -38,8 +38,8 @@ FORBIDDEN_PLACEHOLDERS = [
 def test_readme_pair_language_switch_links():
     cn = README_CN.read_text(encoding="utf-8")
     en = README_EN.read_text(encoding="utf-8")
-    assert "[English](README.en.md)" in cn
-    assert "[简体中文](README.md)" in en
+    assert ("[English](README.en.md)" in cn) or ('href="README.en.md"' in cn)
+    assert ("[简体中文](README.md)" in en) or ('href="README.md"' in en)
 
 
 def test_github_url_and_skill_id_consistent():

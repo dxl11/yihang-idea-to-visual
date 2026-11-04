@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "world": "signals-instruments-darkroom-safelight-bay",
+  "seed": "9c50bab7195a16ad",
+  "surfaces": ["README.md", "README.en.md"],
+  "palette": {
+    "safelight-amber": "#ffb000",
+    "darkroom-black": "#1a0f08",
+    "silver-print": "#c9c2b8",
+    "tray-white": "#f7f3ea"
+  },
+  "assets": {
+    "readmeBanner": "docs/assets/readme-banner.png"
+  },
+  "buildPath": "code"
+}

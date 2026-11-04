@@ -1,21 +1,51 @@
-# Yihang Idea to Visual
+<p align="center">
+  <img src="docs/assets/readme-banner.png" alt="Idea to Visual — a raw idea developing into publishable carousel pages under safelight" width="100%" />
+</p>
 
-English | [简体中文](README.md)
+<p align="center">
+  <strong>Yihang Idea to Visual</strong><br/>
+  <em>Ideas develop in the darkroom · one install · one creative pipeline</em>
+</p>
 
-**Skill id:** `yihang-idea-to-visual`  
-**Display name:** Yihang Idea to Visual  
-**Product:** Idea to Visual — AI personal-IP image/text creation skill  
-**GitHub:** [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
+<p align="center">
+  English · <a href="README.md">简体中文</a> ·
+  <a href="https://github.com/dxl11/yihang-idea-to-visual">GitHub</a> ·
+  <a href="https://agentskills.io/specification">Agent Skills</a>
+</p>
 
-Start from a raw idea. Run Thought Reviewer first to deepen the thinking, then—through staged confirmations—polish the article, craft titles, design a cover, paginate editorial graphics, review visuals, and deliver ordered cover/body PNGs plus a ZIP package ready for social publishing.
+---
 
-This repository ships **one** [Agent Skill](https://agentskills.io/specification)—not an autonomous agent, multi-agent crew, MCP server, or web application. Thought Reviewer is an internal module of that skill, not a separate skill.
+> **TIMER CARD — install now (Cursor project scope)**
+>
+> ```bash
+> npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor
+> ```
+>
+> Node.js **22.20+** · Do **not** manually copy `SKILL.md`
+
+Add `-g` for global install. Add `-y` for non-interactive CI. Full details in sections 4–5.
+
+---
+
+**Idea to Visual** takes a raw idea through Thought Reviewer, then staged polish, titles, cover, editorial pagination, and review—delivering ordered cover/body PNGs plus a ZIP ready for social publishing.
+
+This repository ships **one** [Agent Skill](https://agentskills.io/specification) (`yihang-idea-to-visual`)—not an autonomous agent, multi-agent crew, MCP server, or web application. Thought Reviewer is an internal module of that skill, not a separate skill.
+
+| Darkroom station | Creative stage | What you get |
+|---|---|---|
+| **EXPOSE** | Thought Reviewer | Claim understood, pressure-tested, skippable |
+| **DEVELOP** | Article polish | Stance preserved, language clarified |
+| **FIX** | Article lock | Exact text integrity—no silent rewrite |
+| **WASH** | Title · Cover · Editorial | One platform, one canvas size |
+| **DRY** | Review · Export | `00-cover.png` … + `final-export.zip` |
+
+Core promise: **you stay in thinking and expression; the skill owns review, editing, design, typography, and delivery.**
 
 ---
 
 ## 1. Project name and introduction
 
-**Yihang Idea to Visual** productizes the personal-IP content pipeline: you focus on thinking and expression; the same skill handles editing, design, layout, and packaging.
+**Yihang Idea to Visual** productizes the personal-IP content pipeline.
 
 Canonical skill entry in this repository:
 
@@ -26,8 +56,6 @@ Canonical skill entry in this repository:
 ## 2. Core positioning
 
 Built for creators, researchers, and operators who publish branded carousels. Each project selects **one** platform and **one** canvas size, then exports an upload-ready image set.
-
-Core promise: you stay in thinking and expression; the skill owns editing, design, typography, and delivery.
 
 ## 3. Core features
 
@@ -137,7 +165,9 @@ python -m pip install "Pillow>=10"
 
 ## 6. Thought Reviewer
 
-Why it exists: many ideas are not yet clear enough to polish. Thought Reviewer understands the real claim first, then reviews it from multiple lenses—instead of immediately rewriting it into pretty prose.
+> **EXPOSE** — before polish, let the claim develop under safelight.
+
+Many ideas are not yet clear enough to polish. Thought Reviewer understands the real claim first, then reviews it from multiple lenses—instead of immediately rewriting it into pretty prose.
 
 ### Six review lenses (internal to one skill)
 
@@ -294,6 +324,7 @@ Point `cjk_font_path` at an installed, licensed font. Missing fonts fail loudly 
 ```text
 yihang-idea-to-visual/
 ├── README.md / README.en.md
+├── docs/assets/readme-banner.png
 ├── LICENSE / ASSET-LICENSES.md / CONTRIBUTING.md / CHANGELOG.md
 ├── pyproject.toml / .gitignore
 ├── .github/workflows/validate.yml
@@ -325,6 +356,7 @@ Improvements to docs, platform profiles, scripts, and tests are welcome. Keep th
 
 - Code & docs: MIT ([LICENSE](LICENSE))  
 - Images / fonts / logos: [ASSET-LICENSES.md](ASSET-LICENSES.md)  
+- Banner: `docs/assets/readme-banner.png` is an original darkroom-theme illustration for this project (MIT)  
 - Do not commit private articles, private visual references, private thought notes, private brand kits, API keys, tokens, or credentials  
 - Do not bundle unauthorized third-party fonts, images, or copyrighted full books  
 - Unknown-license references: internal analysis only  
@@ -340,4 +372,6 @@ Improvements to docs, platform profiles, scripts, and tests are welcome. Keep th
 
 ---
 
-Repository: [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
+<p align="center">
+  <a href="https://github.com/dxl11/yihang-idea-to-visual">github.com/dxl11/yihang-idea-to-visual</a>
+</p>

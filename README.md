@@ -1,21 +1,51 @@
-# Yihang Idea to Visual
+<p align="center">
+  <img src="docs/assets/readme-banner.png" alt="Idea to Visual — 暗房中，想法显影为可发布图文" width="100%" />
+</p>
 
-[English](README.en.md) | 简体中文
+<p align="center">
+  <strong>Yihang Idea to Visual</strong><br/>
+  <em>想法在暗房里显影 · 一次安装 · 一条创作链路</em>
+</p>
 
-**Skill 名称：** `yihang-idea-to-visual`  
-**显示名称：** Yihang Idea to Visual  
-**产品定位：** Idea to Visual — AI 个人 IP 图文创作 Skill  
-**GitHub：** [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
+<p align="center">
+  <a href="README.en.md">English</a> · 简体中文 ·
+  <a href="https://github.com/dxl11/yihang-idea-to-visual">GitHub</a> ·
+  <a href="https://agentskills.io/specification">Agent Skills</a>
+</p>
 
-从一句原始想法出发，先经 Thought Reviewer（思想审阅）深化观点，再通过分阶段确认完成文章润色、标题创作、封面设计、图文排版、视觉审核，并交付按发布顺序命名的封面/正文 PNG 与 ZIP。
+---
 
-这是符合 [Agent Skills](https://agentskills.io/specification) 标准的**单一 Skill**，不是 Agent、不是多 Agent 团队、不是 MCP Server，也不是 Web 应用。Thought Reviewer 是 Skill 内部模块，不是独立 Skill。
+> **TIMER CARD — 现在安装（Cursor 项目级）**
+>
+> ```bash
+> npx skills add dxl11/yihang-idea-to-visual --skill yihang-idea-to-visual -a cursor
+> ```
+>
+> Node.js **22.20+** · 不要手动复制 `SKILL.md`
+
+全局安装加 `-g`。非交互加 `-y`。详见下方第 4–5 节。
+
+---
+
+**Idea to Visual** 把一句原始想法，经 Thought Reviewer 深化，再分阶段完成润色、标题、封面、图文排版与审核，最终交付按发布顺序命名的封面 / 正文 PNG 与 ZIP。
+
+这是符合 [Agent Skills](https://agentskills.io/specification) 标准的**单一 Skill**（`yihang-idea-to-visual`）——不是 Agent、不是多 Agent 团队、不是 MCP Server，也不是 Web 应用。Thought Reviewer 是 Skill 内部模块，不是独立 Skill。
+
+| 暗房工位 | 创作阶段 | 你得到什么 |
+|---|---|---|
+| **EXPOSE** | Thought Reviewer | 观点被理解、审阅、可跳过 |
+| **DEVELOP** | 文章润色 | 立场保留，表达变清楚 |
+| **FIX** | 文章锁定 | 原文完整性保护，禁止擅自删改 |
+| **WASH** | 标题 · 封面 · 图文 | 单一平台、同一画布尺寸 |
+| **DRY** | 审核 · 交付 | `00-cover.png` … + `final-export.zip` |
+
+核心理念：**你专注思考与表达；AI 负责审阅、编辑、设计、排版与打包。**
 
 ---
 
 ## 1. 项目名称和介绍
 
-**Yihang Idea to Visual** 把个人表达的生产链路产品化：用户专注思考与表达，AI 在同一 Skill 内完成编辑、设计、排版与打包。
+**Yihang Idea to Visual** 把个人表达的生产链路产品化。
 
 仓库内 Skill 主文件：
 
@@ -26,8 +56,6 @@
 ## 2. 项目核心定位
 
 面向需要持续输出个人 IP 图文的创作者、研究者与经营者。每次创作只选择一个发布平台、使用同一画布尺寸，输出可直接上传社交媒体的图片组。
-
-核心理念：让用户专注于思考和表达，让 AI 负责编辑、设计、排版和制作。
 
 ## 3. 核心功能
 
@@ -132,12 +160,14 @@ npx skills ls -a cursor
 辅助依赖（排版/校验脚本，可选但推荐）：
 
 ```bash
-python -m pip install "Pillow>=10" 
+python -m pip install "Pillow>=10"
 ```
 
 ## 6. Thought Reviewer（思想审阅）
 
-为什么增加：许多想法在润色前尚未想清楚。Thought Reviewer 先帮助理解真实观点，再从多视角审阅，而不是立刻改写成漂亮文章。
+> **EXPOSE** — 润色之前，先让观点在安全灯下显影。
+
+许多想法在润色前尚未想清楚。Thought Reviewer 先帮助理解真实观点，再从多视角审阅，而不是立刻改写成漂亮文章。
 
 ### 六种审阅视角（同一 Skill 内的分析镜头）
 
@@ -295,6 +325,7 @@ npx skills remove yihang-idea-to-visual -a cursor -g
 ```text
 yihang-idea-to-visual/
 ├── README.md / README.en.md
+├── docs/assets/readme-banner.png
 ├── LICENSE / ASSET-LICENSES.md / CONTRIBUTING.md / CHANGELOG.md
 ├── pyproject.toml / .gitignore
 ├── .github/workflows/validate.yml
@@ -326,6 +357,7 @@ python -m pytest
 
 - 代码与文档：MIT（见 [LICENSE](LICENSE)）  
 - 图片 / 字体 / Logo：见 [ASSET-LICENSES.md](ASSET-LICENSES.md)  
+- Banner：`docs/assets/readme-banner.png` 为本项目生成的暗房主题示意图，MIT  
 - 不提交私人文章、私有参考图、私有思想笔记、私有品牌包、API Key / Token / 凭证  
 - 不打包未授权第三方字体、图片或完整受版权保护书籍  
 - 未知授权参考图仅可内部分析  
@@ -341,4 +373,6 @@ python -m pytest
 
 ---
 
-仓库地址：[https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
+<p align="center">
+  <a href="https://github.com/dxl11/yihang-idea-to-visual">github.com/dxl11/yihang-idea-to-visual</a>
+</p>

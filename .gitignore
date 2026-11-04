@@ -96,3 +96,11 @@ credentials/
 # Test artifacts
 tests/artifacts/
 tests/_tmp/
+
+# Impeccable session working files (keep design.json / surfaces committed)
+.impeccable/mocks/
+.impeccable/quality-bar/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/decision-payload.json
+.impeccable/config.local.json

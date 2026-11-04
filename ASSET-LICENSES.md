@@ -71,6 +71,8 @@ Original demo assets under:
 
 are created for this project as abstract layout/color samples. They are **not** commercial templates and are **not** representations of third-party works. They are released under MIT unless a file-level notice says otherwise.
 
+README banner `docs/assets/readme-banner.png` is an original darkroom-theme illustration generated for this project (MIT). Prompt provenance is embedded in the PNG and mirrored in `docs/assets/readme-banner.png.json`.
+
 ---
 
 ## 6. Thought Library

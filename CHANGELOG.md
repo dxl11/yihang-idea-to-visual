@@ -5,6 +5,14 @@ All notable changes to **Idea to Visual** / Skill `yihang-idea-to-visual` are do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] — 2026-11-04
+
+### Changed
+- Redesigned bilingual GitHub README under Darkroom Safelight Bay art direction: custom banner, timer-card install lead, station→workflow mapping; install commands unchanged.
+
+### Added
+- `docs/assets/readme-banner.png`, `PRODUCT.md`, `DESIGN.md`.
+
 ## [1.2.0] — 2026-11-04
 
 ### Added
