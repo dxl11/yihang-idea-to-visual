@@ -1,0 +1,839 @@
+{
+  "version": "1.0",
+  "skill_id": "yihang-idea-to-visual",
+  "library": "thought-library",
+  "updated_at": "2026-11-04T05:44:10Z",
+  "items": [
+    {
+      "id": "TH-BUS-001",
+      "filename": "multiple-mental-models.md",
+      "path": "business/multiple-mental-models.md",
+      "title": "Multiple Mental Models",
+      "title_zh": "多元思维模型",
+      "category": "business",
+      "tags": [
+        "models",
+        "decision",
+        "latticework"
+      ],
+      "best_for": [
+        "complex business judgments"
+      ],
+      "summary": "When one fashionable framework is doing all the work.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "fb53ba63ec21aa7dc5a198f940ceb5a96d907380f94664c39086c8d398918add",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-BUS-002",
+      "filename": "network-effects.md",
+      "path": "business/network-effects.md",
+      "title": "Network Effects",
+      "title_zh": "网络效应",
+      "category": "business",
+      "tags": [
+        "platforms",
+        "scale",
+        "flywheel"
+      ],
+      "best_for": [
+        "platform claims",
+        "viral growth"
+      ],
+      "summary": "When value supposedly rises with more users/participants.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "acd2cec4e41a31653a98cb859ad84a337b561a92815d9121cfc6019a19429ba2",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-BUS-003",
+      "filename": "moat-analysis.md",
+      "path": "business/moat-analysis.md",
+      "title": "Moat Analysis",
+      "title_zh": "护城河分析",
+      "category": "business",
+      "tags": [
+        "moat",
+        "advantage",
+        "competition"
+      ],
+      "best_for": [
+        "durable advantage claims"
+      ],
+      "summary": "When the author claims a lasting competitive edge.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "8765fdea7fa8ab2bfa5b3f367a62199660b329a9da1deb7c967d6443413ee032",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRE-001",
+      "filename": "lateral-thinking.md",
+      "path": "creativity/lateral-thinking.md",
+      "title": "Lateral Thinking",
+      "title_zh": "横向思维",
+      "category": "creativity",
+      "tags": [
+        "lateral",
+        "reframe",
+        "provocation"
+      ],
+      "best_for": [
+        "stuck frames",
+        "cliché angles"
+      ],
+      "summary": "When the idea is correct but tired.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "ed3dfa06aad43669ff69be0f44b321c7d9d8b16e2b48b9cfc0625a2619c6aa8b",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRE-002",
+      "filename": "cross-disciplinary-links.md",
+      "path": "creativity/cross-disciplinary-links.md",
+      "title": "Cross-disciplinary Links",
+      "title_zh": "跨学科联系",
+      "category": "creativity",
+      "tags": [
+        "interdisciplinary",
+        "transfer",
+        "bridge"
+      ],
+      "best_for": [
+        "AI+business",
+        "tech+society"
+      ],
+      "summary": "When a second field could illuminate the claim.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "6d39b1d8ae650ca89e9fab32b355280e004e17f1e0077f0b25220342f4afebe1",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRE-003",
+      "filename": "analogical-reasoning.md",
+      "path": "creativity/analogical-reasoning.md",
+      "title": "Analogical Reasoning",
+      "title_zh": "类比推理",
+      "category": "creativity",
+      "tags": [
+        "analogy",
+        "mapping",
+        "metaphor"
+      ],
+      "best_for": [
+        "explanations",
+        "insight transfer"
+      ],
+      "summary": "When an analogy is carrying the argument.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "14747c53dde62754388f4a56221432acaffc16289f081763bf6a928f631a5f76",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRE-004",
+      "filename": "combinatorial-innovation.md",
+      "path": "creativity/combinatorial-innovation.md",
+      "title": "Combinatorial Innovation",
+      "title_zh": "组合创新",
+      "category": "creativity",
+      "tags": [
+        "combine",
+        "remix",
+        "innovation"
+      ],
+      "best_for": [
+        "product ideas",
+        "content formats"
+      ],
+      "summary": "When the author senses a new idea but cannot name it.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "e2cf7668ff7191902290dc9be902a8f1ca41826de2342131048cbd348a8d1977",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRT-001",
+      "filename": "reverse-thinking.md",
+      "path": "critical-thinking/reverse-thinking.md",
+      "title": "Reverse Thinking",
+      "title_zh": "逆向思维",
+      "category": "critical-thinking",
+      "tags": [
+        "inversion",
+        "counter",
+        "risk"
+      ],
+      "best_for": [
+        "strategy claims",
+        "success recipes"
+      ],
+      "summary": "When the author lists how to succeed; invert to how the idea fails.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "cfe039d7ded41f0bef0ca16c0d533da2ab45e6f64f23fe2a7c7957f703a41135",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRT-002",
+      "filename": "counterexample-test.md",
+      "path": "critical-thinking/counterexample-test.md",
+      "title": "Counterexample Test",
+      "title_zh": "反例检验",
+      "category": "critical-thinking",
+      "tags": [
+        "counterexample",
+        "boundary",
+        "scope"
+      ],
+      "best_for": [
+        "universal claims",
+        "always/never wording"
+      ],
+      "summary": "When wording implies universality.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "cd2dda3356c384072e78d25d9b420197a8f5b1c18688e8ba7310dbd584e72aec",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRT-003",
+      "filename": "cognitive-bias-check.md",
+      "path": "critical-thinking/cognitive-bias-check.md",
+      "title": "Cognitive Bias Check",
+      "title_zh": "认知偏差识别",
+      "category": "critical-thinking",
+      "tags": [
+        "bias",
+        "psychology",
+        "judgment"
+      ],
+      "best_for": [
+        "overconfidence",
+        "survivorship",
+        "confirmation"
+      ],
+      "summary": "When the argument may be shaped by common judgment traps.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "9af232c90ab9f83f9b8409d92726b851c3fefa486b1372788641d8a12d1439b5",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRT-004",
+      "filename": "causal-analysis.md",
+      "path": "critical-thinking/causal-analysis.md",
+      "title": "Causal Analysis",
+      "title_zh": "因果分析",
+      "category": "critical-thinking",
+      "tags": [
+        "causation",
+        "correlation",
+        "mechanism"
+      ],
+      "best_for": [
+        "because claims",
+        "growth narratives"
+      ],
+      "summary": "When A is said to cause B.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "0b19cee3f043ca924a8fd364c448a2998a0b9aa03d5973fd6f8af2fb91362a2b",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-CRT-005",
+      "filename": "premise-check.md",
+      "path": "critical-thinking/premise-check.md",
+      "title": "Premise Check",
+      "title_zh": "前提检验",
+      "category": "critical-thinking",
+      "tags": [
+        "assumptions",
+        "hidden premises"
+      ],
+      "best_for": [
+        "hidden defaults",
+        "shared culture assumptions"
+      ],
+      "summary": "When the conclusion depends on unspoken defaults.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "627226d46ddf8eb14f8e30c53ab3d6d53cc2ac1952d46e152e7be855905384ec",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-ECO-001",
+      "filename": "opportunity-cost.md",
+      "path": "economics/opportunity-cost.md",
+      "title": "Opportunity Cost",
+      "title_zh": "机会成本",
+      "category": "economics",
+      "tags": [
+        "tradeoff",
+        "scarce",
+        "choice"
+      ],
+      "best_for": [
+        "priority claims",
+        "time allocation"
+      ],
+      "summary": "When recommending an action without naming what is given up.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "03cd91db00c8f8521dd0424478cd36639956c7176d7d3486ce28d94d62f1bcd4",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-ECO-002",
+      "filename": "incentive-analysis.md",
+      "path": "economics/incentive-analysis.md",
+      "title": "Incentive Analysis",
+      "title_zh": "激励机制",
+      "category": "economics",
+      "tags": [
+        "incentives",
+        "behavior",
+        "institutions"
+      ],
+      "best_for": [
+        "org design",
+        "policy",
+        "platform rules"
+      ],
+      "summary": "When outcomes depend on how people are rewarded or punished.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "b246479f2a7463b3d6787b1845908962e4c05145b13084c5cdede71bf6a4f5a3",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-ECO-003",
+      "filename": "comparative-advantage.md",
+      "path": "economics/comparative-advantage.md",
+      "title": "Comparative Advantage",
+      "title_zh": "比较优势",
+      "category": "economics",
+      "tags": [
+        "specialization",
+        "trade",
+        "relative cost"
+      ],
+      "best_for": [
+        "who should do what",
+        "outsourcing claims"
+      ],
+      "summary": "When absolute skill is confused with relative opportunity.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "44f27f67b9f2c39eb3e3812d88358d1da3fbad01d06936af1095113c61430fe6",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-LOG-001",
+      "filename": "deductive-reasoning.md",
+      "path": "logic/deductive-reasoning.md",
+      "title": "Deductive Reasoning",
+      "title_zh": "演绎推理",
+      "category": "logic",
+      "tags": [
+        "entailment",
+        "validity",
+        "argument"
+      ],
+      "best_for": [
+        "if-then chains",
+        "policy conclusions"
+      ],
+      "summary": "When the author presents premises that supposedly force a conclusion.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "32acd8c1cf8b3467eac675e0c20326377e03cc0b63aaaf5bf3aa8a6dc754d8f6",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-LOG-002",
+      "filename": "inductive-reasoning.md",
+      "path": "logic/inductive-reasoning.md",
+      "title": "Inductive Reasoning",
+      "title_zh": "归纳推理",
+      "category": "logic",
+      "tags": [
+        "generalization",
+        "samples",
+        "evidence"
+      ],
+      "best_for": [
+        "anecdotes to rules",
+        "trend claims"
+      ],
+      "summary": "When a general rule is inferred from limited cases.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "3ca8c3d3936a724bd9967778c109679430bb92508ce366b21d280be6227a76f4",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-LOG-003",
+      "filename": "falsificationism.md",
+      "path": "logic/falsificationism.md",
+      "title": "Falsificationism",
+      "title_zh": "证伪主义",
+      "category": "logic",
+      "tags": [
+        "falsify",
+        "testability",
+        "science"
+      ],
+      "best_for": [
+        "unfalsifiable slogans",
+        "strong predictions"
+      ],
+      "summary": "When a claim is so flexible that no observation could challenge it.",
+      "source": "Curated method card; not a book excerpt",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "04913e216704d22348a31ca4491b0cb0b7794a7afa8500005a9c78780b6fb4d4",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-MIS-001",
+      "filename": "source-attribution.md",
+      "path": "miscellaneous/source-attribution.md",
+      "title": "Source Attribution Discipline",
+      "title_zh": "资料出处纪律",
+      "category": "miscellaneous",
+      "tags": [
+        "citation",
+        "copyright",
+        "provenance"
+      ],
+      "best_for": [
+        "expert uploads",
+        "quotations"
+      ],
+      "summary": "Whenever expert notes, books, or papers are referenced.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "fb69d8568183d1ffa2d2581a2ffe388ba4089ea112cbd02901971cc9f007a43b",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-MIS-DEMO-001",
+      "filename": "demo-expert-note-distribution-vs-insight.md",
+      "path": "miscellaneous/demo-expert-note-distribution-vs-insight.md",
+      "title": "Demo Note: Distribution vs Insight",
+      "title_zh": "测试资料：分发与洞察",
+      "category": "miscellaneous",
+      "tags": [
+        "demo",
+        "citation-test",
+        "ai",
+        "distribution",
+        "insight"
+      ],
+      "best_for": [
+        "knowledge-base citation tests"
+      ],
+      "summary": "When generative tools compress production cost, attention markets tighten.",
+      "source": "Original demo note for yihang-idea-to-visual tests",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "Demo Thought Note: Distribution vs Insight",
+      "section": "Core claim",
+      "page": "1",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "aa03a85a7d7ad6501b92eabd8e3e5329e319ab0384782caefeec7ca186fe7292",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-PHI-001",
+      "filename": "socratic-questioning.md",
+      "path": "philosophy/socratic-questioning.md",
+      "title": "Socratic Questioning",
+      "title_zh": "苏格拉底式提问",
+      "category": "philosophy",
+      "tags": [
+        "questioning",
+        "definitions",
+        "clarification"
+      ],
+      "best_for": [
+        "unclear goals",
+        "vague claims"
+      ],
+      "summary": "When the author's claim sounds confident but key terms or aims remain fuzzy.",
+      "source": "Classical method summary; curated card for yihang-idea-to-visual",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "c4fe2329581b88cacb50c7d9046a31f3579471f33bb21bc472c2310f09af15cc",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-PHI-002",
+      "filename": "conceptual-analysis.md",
+      "path": "philosophy/conceptual-analysis.md",
+      "title": "Conceptual Analysis",
+      "title_zh": "概念分析",
+      "category": "philosophy",
+      "tags": [
+        "concepts",
+        "definitions",
+        "ambiguity"
+      ],
+      "best_for": [
+        "loaded words",
+        "category mistakes"
+      ],
+      "summary": "When a keyword carries multiple meanings.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "9e3e9071aad32195a17175be8603c11faeb2f969f18adf5d66168efaa8238cde",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-PHI-003",
+      "filename": "first-principles.md",
+      "path": "philosophy/first-principles.md",
+      "title": "First Principles",
+      "title_zh": "第一性原理",
+      "category": "philosophy",
+      "tags": [
+        "fundamentals",
+        "decomposition",
+        "rebuild"
+      ],
+      "best_for": [
+        "inherited assumptions",
+        "industry slogans"
+      ],
+      "summary": "When the idea rests on industry common sense that may be outdated or borrowed.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "95fec4adf1728289b3a1e9b00f85a24fcc0d42afe75e9efb6f34ed862465ae64",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-PSY-001",
+      "filename": "reader-empathy.md",
+      "path": "psychology/reader-empathy.md",
+      "title": "Reader Empathy",
+      "title_zh": "普通读者共情",
+      "category": "psychology",
+      "tags": [
+        "audience",
+        "clarity",
+        "misread"
+      ],
+      "best_for": [
+        "public writing",
+        "carousel copy"
+      ],
+      "summary": "Before turning a thought into publishable writing.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "db3aef72e27c980b0df640c8823fd0383cff520f6118193b274f1b7343936674",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-SCI-001",
+      "filename": "probabilistic-thinking.md",
+      "path": "science/probabilistic-thinking.md",
+      "title": "Probabilistic Thinking",
+      "title_zh": "概率思维",
+      "category": "science",
+      "tags": [
+        "probability",
+        "uncertainty",
+        "base-rate"
+      ],
+      "best_for": [
+        "forecasts",
+        "risk claims"
+      ],
+      "summary": "When certainty language hides uncertainty.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "8ad5cdb3f5eeb344559d0f407f8dd5902a4351c5856e0dc7daa731887fcfcfb3",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-SYS-001",
+      "filename": "systems-thinking.md",
+      "path": "systems-thinking/systems-thinking.md",
+      "title": "Systems Thinking",
+      "title_zh": "系统思维",
+      "category": "systems-thinking",
+      "tags": [
+        "system",
+        "interdependence",
+        "structure"
+      ],
+      "best_for": [
+        "ecosystems",
+        "org problems",
+        "AI markets"
+      ],
+      "summary": "When local fixes keep failing because parts interact.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "f813adf9377d12c50febb39ec1c200684300c219af4fb73caecfc11f3828fdff",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-SYS-002",
+      "filename": "feedback-loops.md",
+      "path": "systems-thinking/feedback-loops.md",
+      "title": "Feedback Loops",
+      "title_zh": "反馈回路",
+      "category": "systems-thinking",
+      "tags": [
+        "reinforcing",
+        "balancing",
+        "loop"
+      ],
+      "best_for": [
+        "flywheels",
+        "runaways",
+        "homeostasis"
+      ],
+      "summary": "When outcomes feed back into causes.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "164c11506ffd64feae1fb6732410394ecd24cfdfe60008bbe5d5de26f53b4fa4",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-SYS-003",
+      "filename": "complex-systems.md",
+      "path": "systems-thinking/complex-systems.md",
+      "title": "Complex Systems",
+      "title_zh": "复杂系统",
+      "category": "systems-thinking",
+      "tags": [
+        "emergence",
+        "nonlinearity",
+        "adaptation"
+      ],
+      "best_for": [
+        "markets",
+        "culture",
+        "AI ecosystems"
+      ],
+      "summary": "When linear plans collide with adaptive agents.",
+      "source": "Curated method card",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "f211504b503f3e7bf8ab0ec5fcd9c8242e93479c196abb3575fb8898e79ec62b",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    },
+    {
+      "id": "TH-SYS-004",
+      "filename": "leverage-points.md",
+      "path": "systems-thinking/leverage-points.md",
+      "title": "Leverage Points",
+      "title_zh": "杠杆点",
+      "category": "systems-thinking",
+      "tags": [
+        "intervention",
+        "leverage",
+        "change"
+      ],
+      "best_for": [
+        "where to intervene",
+        "strategy focus"
+      ],
+      "summary": "When the author pushes on a low-leverage symptom.",
+      "source": "Curated method card; not a book excerpt",
+      "author": "Yihang Idea to Visual Contributors",
+      "work_title": "",
+      "section": "",
+      "page": "",
+      "license": "MIT",
+      "attribution": "",
+      "sha256": "252bf3841622b6efa8fce690569448c935b97cd2cd75e6768ef772469503772c",
+      "updated_at": "2026-11-04T05:44:10Z",
+      "missing": false
+    }
+  ],
+  "stats": {
+    "total": 29,
+    "missing": 0,
+    "categories": [
+      "business",
+      "creativity",
+      "critical-thinking",
+      "economics",
+      "logic",
+      "miscellaneous",
+      "philosophy",
+      "psychology",
+      "science",
+      "systems-thinking"
+    ]
+  }
+}

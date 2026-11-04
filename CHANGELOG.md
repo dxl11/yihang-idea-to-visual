@@ -5,6 +5,20 @@ All notable changes to **Idea to Visual** / Skill `yihang-idea-to-visual` are do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-11-04
+
+### Added
+- Thought Reviewer (STEP 00) inside the existing skill: six lenses, eight qualitative dimensions, dialogue rules, and three modes (`standard` / `deep_critique` / `light`).
+- Progressive references: `thought-reviewer.md`, `thinking-frameworks.md`.
+- Thought Library under `assets/thought-library/` with curated method cards, demo citation note, and `scripts/build_thought_index.py`.
+- Project statuses `thought_review` / `thought_ready`, optional `thought_mode` / `thought_skipped`, and `thought/` artifacts in the project template.
+- Acceptance fixtures and automated tests for Thought Reviewer wiring, indexing, skip path docs, and citation metadata.
+- Bilingual README section documenting Thought Reviewer, dialogue, modes, private library maintenance, and copyright rules.
+
+### Changed
+- Workflow now starts with optional thought review before article polish; existing stages 01–06 remain intact.
+- Skill metadata version bumped to 1.2.0.
+
 ## [1.1.0] — 2026-03-25
 
 ### Added

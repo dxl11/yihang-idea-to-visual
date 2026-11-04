@@ -4,6 +4,8 @@
 
 Transform raw user input into a clear, publishable article while preserving the author's voice and intent.
 
+Thought Reviewer (STEP 00) runs **before** this stage unless the user explicitly skips it. Prefer `thought/deepened-idea.md` when present; otherwise start from `source/original-idea.md`.
+
 ## Input types
 
 - Quick notes or sticky thoughts
@@ -12,10 +14,11 @@ Transform raw user input into a clear, publishable article while preserving the 
 - Work notes / meeting remnants
 - Speech-to-text transcripts
 - Multi-fragment thinking not yet coherent
+- Deepened ideas after Thought Reviewer dialogue
 
 ## Process
 
-1. **Understand intent** — What does the author actually want readers to take away?
+1. **Understand intent** — What does the author actually want readers to take away? Reuse STEP 00 understanding; do not restart critique unless the user asks.
 2. **Identify theme** — One primary theme; secondary themes stay supporting.
 3. **Map logic** — Cause→effect, problem→insight→action, narrative arc, or claim→evidence.
 4. **Restructure** — Headings/sections only when they help reading; do not force a blog template.

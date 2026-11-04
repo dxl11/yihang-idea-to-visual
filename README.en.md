@@ -7,9 +7,9 @@ English | [简体中文](README.md)
 **Product:** Idea to Visual — AI personal-IP image/text creation skill  
 **GitHub:** [https://github.com/dxl11/yihang-idea-to-visual](https://github.com/dxl11/yihang-idea-to-visual)
 
-Start from a raw idea. Through staged confirmations, organize thinking, polish the article, craft titles, design a cover, paginate editorial graphics, review visuals, and deliver ordered cover/body PNGs plus a ZIP package ready for social publishing.
+Start from a raw idea. Run Thought Reviewer first to deepen the thinking, then—through staged confirmations—polish the article, craft titles, design a cover, paginate editorial graphics, review visuals, and deliver ordered cover/body PNGs plus a ZIP package ready for social publishing.
 
-This repository ships **one** [Agent Skill](https://agentskills.io/specification)—not an autonomous agent, multi-agent crew, MCP server, or web application.
+This repository ships **one** [Agent Skill](https://agentskills.io/specification)—not an autonomous agent, multi-agent crew, MCP server, or web application. Thought Reviewer is an internal module of that skill, not a separate skill.
 
 ---
 
@@ -31,10 +31,11 @@ Core promise: you stay in thinking and expression; the skill owns editing, desig
 
 ## 3. Core features
 
-- Six gated stages (article → title → cover → editorial → review → export)
+- Thought Reviewer: idea critique, multi-turn dialogue, and optional skip
+- Seven gated stages (thought review → article → title → cover → editorial → review → export)
 - Locked-article integrity protection (no silent rewrite/summary/deletion)
 - Platform profiles separated from skill instructions
-- Visual reference indexing, contact sheets, multi-reference trait remixing
+- Thought library (method-card retrieval) plus visual reference library
 - Three brand layers: long-term identity / lasting preferences / per-project style
 - Pillow-based precise typography (split from generative imagery)
 - Resumable private project state under `.idea-to-visual/projects/`
@@ -126,7 +127,7 @@ npx skills ls -a cursor
 
 1. Open the project (or any project, if globally installed) in Cursor.  
 2. Invoke `/yihang-idea-to-visual` or describe your creative request.  
-3. Confirm each stage; the agent may run bundled Python helpers (Python 3.10+ and Pillow recommended).
+3. Default start is Thought Reviewer; you may skip straight to polish. Then confirm each stage; the agent may run bundled Python helpers (Python 3.10+ and Pillow recommended).
 
 Optional helper dependency:
 
@@ -134,8 +135,58 @@ Optional helper dependency:
 python -m pip install "Pillow>=10"
 ```
 
-## 6. Full creative workflow
+## 6. Thought Reviewer
 
+Why it exists: many ideas are not yet clear enough to polish. Thought Reviewer understands the real claim first, then reviews it from multiple lenses—instead of immediately rewriting it into pretty prose.
+
+### Six review lenses (internal to one skill)
+
+1. Philosophical thinking  
+2. Logical analysis  
+3. Critical thinking  
+4. Domain expertise (selected dynamically; not all domains every time)  
+5. Creative thinking  
+6. Ordinary-reader perspective  
+
+### Eight qualitative dimensions (no fake precision scores)
+
+Clarity, depth, logical rigor, evidential support, distinctiveness, counterargument stress-test, practical value, and expression potential.
+
+Allowed labels: strong / worth strengthening / critical issue / worth exploring further / no outstanding issue found.
+
+### Dialogue mechanism
+
+- Prefer **one** key question per turn and wait for the author's judgment  
+- Update the review from new answers instead of repeating the first conclusion  
+- The author may keep the original stance; do not pressure toward an AI verdict  
+- The author may end review anytime, or ask to enter article polish  
+
+### Three modes
+
+| Mode | Behavior |
+|---|---|
+| Standard (default) | Affirm valuable observations, then gaps and directions |
+| Deep critique | When requested: prioritize argument, evidence, assumptions, strongest counter |
+| Light | Core claim + one highlight + one question |
+
+If the user explicitly declines thought review, continue directly to STEP 01.
+
+### Thought library
+
+Path: `.agents/skills/yihang-idea-to-visual/assets/thought-library/`
+
+- Curated method cards across philosophy, logic, critique, business, economics, science, psychology, creativity, and systems thinking  
+- Index with `scripts/build_thought_index.py` → `catalog.json`  
+- Keep private expert materials under `private/` (gitignored) or in a local project path  
+- Prefer extracting executable methods over uploading entire books  
+- When citing: separate source wording from AI paraphrase; record author / title / section / page; never invent citations  
+- **Do not** commit copyrighted full books to the public GitHub repository  
+
+See [thought-library/README.md](.agents/skills/yihang-idea-to-visual/assets/thought-library/README.md) and [thought-reviewer.md](.agents/skills/yihang-idea-to-visual/references/thought-reviewer.md).
+
+## 7. Full creative workflow
+
+0. **STEP 00 — Thought Reviewer** — Understand the claim, multi-lens review, optional dialogue; skippable.  
 1. **STEP 01 — Thought organization & polish** — Preserve stance and voice; lock on confirmation.  
 2. **STEP 02 — Titles** — Offer five meaningfully different directions from the locked article.  
 3. **STEP 03 — Cover** — Pick one platform; ask ≤3 decisive visual questions; show three structurally distinct cover previews.  
@@ -143,9 +194,9 @@ python -m pip install "Pillow>=10"
 5. **STEP 05 — Review** — Thumbnails; single/multi/global edits; copy changes require returning to STEP 01.  
 6. **STEP 06 — QA & delivery** — Validate, then emit `00-cover.png`, `01-page.png`, … and `final-export.zip`.
 
-Do not skip unconfirmed stages. New chats must resume from project `state.json`.
+Do not skip unconfirmed stages (Thought Reviewer may be skipped when the user explicitly asks). New chats must resume from project `state.json`.
 
-## 7. Visual reference library
+## 8. Visual reference library
 
 Path: `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
 
@@ -157,7 +208,7 @@ Path: `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
 
 See [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
 
-## 8. Personal brand visual system
+## 9. Personal brand visual system
 
 Three layers—never conflate them:
 
@@ -168,23 +219,26 @@ Three layers—never conflate them:
 Sample: [brand-profile.sample.json](.agents/skills/yihang-idea-to-visual/assets/brand-kit/brand-profile.sample.json)  
 Real logos/preferences go in `assets/brand-kit/private/` (not committed). Missing brand names must not invent a fake identity—continue with neutral design.
 
-## 9. Usage examples
+## 10. Usage examples
 
 ```text
 User: Use Yihang Idea to Visual to turn these notes into a Xiaohongshu carousel.
+AI: Enter STEP 00 Thought Reviewer, restate the claim, and ask one key question…
+User: Skip review and polish directly.
 AI: Enter STEP 01, polish the article → lock → ask whether to continue to titles…
 ```
 
 Platform profiles: [profiles.json](.agents/skills/yihang-idea-to-visual/assets/platform-profiles/profiles.json)
 
 ```bash
+python .agents/skills/yihang-idea-to-visual/scripts/build_thought_index.py --help
 python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py --help
 python .agents/skills/yihang-idea-to-visual/scripts/render_pages.py --list-templates
 python .agents/skills/yihang-idea-to-visual/scripts/validate_project.py --help
 python .agents/skills/yihang-idea-to-visual/scripts/package_export.py --help
 ```
 
-## 10. Update and uninstall
+## 11. Update and uninstall
 
 ### Check for updates
 
@@ -235,7 +289,7 @@ Cursor project installs use `.agents/skills/`. Do not also manually copy into `.
 **Q: Garbled Chinese in rendered PNGs?**  
 Point `cjk_font_path` at an installed, licensed font. Missing fonts fail loudly instead of emitting mojibake.
 
-## 11. Repository layout
+## 12. Repository layout
 
 ```text
 yihang-idea-to-visual/
@@ -245,17 +299,19 @@ yihang-idea-to-visual/
 ├── .github/workflows/validate.yml
 ├── .agents/skills/yihang-idea-to-visual/
 │   ├── SKILL.md
-│   ├── references/
-│   ├── scripts/
+│   ├── references/          # includes thought-reviewer.md
+│   ├── scripts/             # includes build_thought_index.py
 │   ├── schemas/
 │   └── assets/
+│       ├── thought-library/
+│       └── visual-reference-library/
 ├── examples/
 └── tests/
 ```
 
-Keep private project data under `.idea-to-visual/projects/` (gitignored).
+Keep private project data under `.idea-to-visual/projects/` (gitignored). Keep private thought notes under `assets/thought-library/private/`.
 
-## 12. Contributing
+## 13. Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Before opening a PR:
 
@@ -265,13 +321,14 @@ python -m pytest
 
 Improvements to docs, platform profiles, scripts, and tests are welcome. Keep the skill id `yihang-idea-to-visual` and never commit private user content.
 
-## 13. Copyright and privacy
+## 14. Copyright and privacy
 
 - Code & docs: MIT ([LICENSE](LICENSE))  
 - Images / fonts / logos: [ASSET-LICENSES.md](ASSET-LICENSES.md)  
-- Do not commit private articles, private references, private brand kits, API keys, tokens, or credentials  
-- Do not bundle unauthorized third-party fonts or images  
+- Do not commit private articles, private visual references, private thought notes, private brand kits, API keys, tokens, or credentials  
+- Do not bundle unauthorized third-party fonts, images, or copyrighted full books  
 - Unknown-license references: internal analysis only  
+- Thought-library citations must be traceable; never invent provenance  
 
 ### Current limitations
 
@@ -279,6 +336,7 @@ Improvements to docs, platform profiles, scripts, and tests are welcome. Keep th
 - Platform sizes are configurable defaults—verify against official sources when needed  
 - Semantic reference analysis depends on host vision capability  
 - CJK rendering quality depends on local fonts  
+- Thought Reviewer depends on the host agent's reasoning and optional search; the library does not auto-ingest entire bookshelves  
 
 ---
 

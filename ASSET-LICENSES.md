@@ -73,12 +73,33 @@ are created for this project as abstract layout/color samples. They are **not** 
 
 ---
 
-## 6. Contribution Rule
+## 6. Thought Library
+
+Path: `.agents/skills/yihang-idea-to-visual/assets/thought-library/`
+
+| Material | Default status | Public repo? |
+|---|---|---|
+| Curated method cards in this repo | MIT | Yes |
+| Original demo expert note | MIT | Yes |
+| User private notes / excerpts | Private / user-owned | No (`private/`) |
+| Copyrighted full books or scanned chapters | Not allowed | No |
+
+Rules:
+- Prefer short executable method cards over bulk uploads.
+- Record `author` / `source` / `work_title` / `section` / `page` when citing.
+- Never invent citations or page numbers.
+- Do not commit copyrighted full books to the public repository.
+- Private materials stay under `private/` (gitignored) or outside the repo.
+
+---
+
+## 7. Contribution Rule
 
 Do not open a pull request that adds:
 - Scraped web images
 - Magazine scans without documented permission
 - Packaged commercial fonts
 - Private brand kits or private project articles
+- Copyrighted full books or unauthorized long excerpts for the Thought Library
 
-When contributing an image, include license, source, and attribution in `catalog.json` or the image's index entry.
+When contributing an image or thought card, include license, source, and attribution in `catalog.json` or the card frontmatter.

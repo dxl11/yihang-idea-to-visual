@@ -63,6 +63,11 @@ preferences.private.json
 **/visual-reference-library/**/*.private.*
 **/visual-reference-library/**/private/
 
+# Private thought library notes (keep public method cards only)
+.agents/skills/yihang-idea-to-visual/assets/thought-library/private/
+**/thought-library/**/*.private.*
+**/thought-library/**/private/
+
 # Generated outputs and caches
 **/output/
 **/export/

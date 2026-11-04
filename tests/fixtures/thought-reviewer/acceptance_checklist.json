@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "skill_id": "yihang-idea-to-visual",
+  "module": "thought-reviewer",
+  "scenarios": [
+    {
+      "id": "T1",
+      "fixture": "t1_basic_claim.md",
+      "must_cover": [
+        "core_claim_restatement",
+        "argument_or_assumption_check",
+        "one_key_followup_question"
+      ]
+    },
+    {
+      "id": "T2",
+      "fixture": "t2_logic_gap.md",
+      "must_cover": [
+        "overgeneralization_or_sample_bias",
+        "leap_from_anecdote_to_universal_rule",
+        "scope_or_evidence_gap"
+      ]
+    },
+    {
+      "id": "T3",
+      "fixture": "t3_business_counter.md",
+      "must_cover": [
+        "strongest_counterargument",
+        "conditions_where_counter_wins",
+        "revise_supplement_or_hold"
+      ]
+    },
+    {
+      "id": "T4",
+      "fixture": "t4_multidiscipline.md",
+      "must_cover": [
+        "technology_or_ai_lens",
+        "business_or_distribution_lens",
+        "systems_or_feedback_lens"
+      ]
+    },
+    {
+      "id": "T5",
+      "fixture": "t5_citation_prompt.md",
+      "must_cover": [
+        "source_author",
+        "source_title_or_work_title",
+        "section_or_page",
+        "quote_vs_interpretation_split"
+      ],
+      "demo_source_id": "TH-MIS-DEMO-001"
+    },
+    {
+      "id": "T6",
+      "fixtures": ["t6_dialogue_turn1.md", "t6_dialogue_turn2.md"],
+      "must_cover": [
+        "updated_understanding_after_reply",
+        "no_frozen_first_conclusion"
+      ]
+    },
+    {
+      "id": "T7",
+      "fixture": "t7_skip_review.md",
+      "must_cover": [
+        "skip_allowed",
+        "enter_article_review_or_step_01"
+      ]
+    },
+    {
+      "id": "T8",
+      "fixture": null,
+      "must_cover": [
+        "existing_render_export_tests_still_pass",
+        "article_integrity_protection_unchanged"
+      ]
+    }
+  ]
+}

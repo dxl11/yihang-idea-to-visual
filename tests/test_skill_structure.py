@@ -14,6 +14,8 @@ SKILL_MD = SKILL_DIR / "SKILL.md"
 SKILL_ID = "yihang-idea-to-visual"
 
 REFERENCE_FILES = [
+    "thought-reviewer.md",
+    "thinking-frameworks.md",
     "content-editing.md",
     "title-generation.md",
     "platform-profiles.md",
@@ -26,6 +28,7 @@ REFERENCE_FILES = [
 ]
 
 SCRIPTS = [
+    "build_thought_index.py",
     "build_reference_index.py",
     "create_contact_sheet.py",
     "render_pages.py",

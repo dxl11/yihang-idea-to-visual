@@ -1,3 +1,3 @@
-# Original Idea
+﻿# Original idea
 
-Paste the user's raw idea here.
+(Paste the raw idea here.)

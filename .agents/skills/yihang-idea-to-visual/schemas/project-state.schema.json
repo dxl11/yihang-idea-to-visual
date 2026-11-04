@@ -14,6 +14,8 @@
     "status": {
       "type": "string",
       "enum": [
+        "thought_review",
+        "thought_ready",
         "article_review",
         "article_locked",
         "title_review",
@@ -31,6 +33,11 @@
     },
     "created_at": { "type": "string" },
     "updated_at": { "type": "string" },
+    "thought_mode": {
+      "type": ["string", "null"],
+      "enum": ["standard", "deep_critique", "light", null]
+    },
+    "thought_skipped": { "type": ["boolean", "null"] },
     "article_version": { "type": ["string", "null"] },
     "title_version": { "type": ["string", "null"] },
     "platform_id": { "type": ["string", "null"] },
@@ -45,6 +52,7 @@
     "locks": {
       "type": "object",
       "properties": {
+        "thought": { "type": "boolean" },
         "article": { "type": "boolean" },
         "title": { "type": "boolean" },
         "cover": { "type": "boolean" },
