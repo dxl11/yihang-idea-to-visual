@@ -82,6 +82,58 @@ def aspect_ratio_label(width: int, height: int) -> str:
     return f"{width // g}:{height // g}"
 
 
+DEFAULT_CATEGORIES = [
+    "editorial",
+    "minimalism",
+    "technology",
+    "artistic",
+    "infographic",
+    "typography",
+    "cover-design",
+    "carousel-layout",
+    "photography",
+    "color-palettes",
+]
+
+
+def empty_catalog() -> Dict[str, Any]:
+    """Return an empty visual reference catalog skeleton.
+
+    Returns:
+        Catalog dictionary with zero assets.
+    """
+    return {
+        "version": "1.0",
+        "skill_id": "yihang-idea-to-visual",
+        "description": "Yihang Idea to Visual built-in visual reference library",
+        "total_assets": 0,
+        "categories": list(DEFAULT_CATEGORIES),
+        "assets": [],
+        "items": [],
+        "updated_at": None,
+        "stats": {"total": 0, "pending_analysis": 0, "duplicates": 0},
+    }
+
+
+def normalize_catalog_entries(data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Return the asset list from either ``assets`` or legacy ``items``.
+
+    Args:
+        data: Catalog dictionary.
+
+    Returns:
+        List of asset/item dictionaries.
+
+    Raises:
+        IndexError_: If neither field is a list.
+    """
+    if isinstance(data.get("assets"), list):
+        return list(data["assets"])
+    if isinstance(data.get("items"), list):
+        return list(data["items"])
+    raise IndexError_("catalog missing assets/items array")
+
+
 def load_catalog(path: Path) -> Dict[str, Any]:
     """Load an existing catalog or return an empty structure.
 
@@ -95,18 +147,21 @@ def load_catalog(path: Path) -> Dict[str, Any]:
         IndexError_: If JSON is invalid.
     """
     if not path.exists():
-        return {
-            "version": "1.0",
-            "skill_id": "yihang-idea-to-visual",
-            "updated_at": _utc_now(),
-            "items": [],
-        }
+        return empty_catalog()
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise IndexError_(f"invalid catalog at {path}: {exc}") from exc
-    if "items" not in data or not isinstance(data["items"], list):
-        raise IndexError_("catalog missing items array")
+    entries = normalize_catalog_entries(data)
+    data["items"] = entries
+    data["assets"] = entries
+    data.setdefault("skill_id", "yihang-idea-to-visual")
+    data.setdefault(
+        "description",
+        "Yihang Idea to Visual built-in visual reference library",
+    )
+    data.setdefault("categories", list(DEFAULT_CATEGORIES))
+    data["total_assets"] = len(entries)
     return data
 
 
@@ -194,12 +249,11 @@ def build_or_update(
     if not library.is_dir():
         raise FileNotFoundError(f"library not found: {library}")
 
-    catalog = load_catalog(output) if incremental and output.exists() else {
-        "version": "1.0",
-        "skill_id": "yihang-idea-to-visual",
-        "updated_at": _utc_now(),
-        "items": [],
-    }
+    catalog = (
+        load_catalog(output)
+        if incremental and output.exists()
+        else empty_catalog()
+    )
     by_path: Dict[str, Dict[str, Any]] = {
         str(item.get("path")): item for item in catalog["items"] if item.get("path")
     }
@@ -288,8 +342,15 @@ def build_or_update(
         items.append(item)
 
     catalog["items"] = items
+    catalog["assets"] = items
+    catalog["total_assets"] = len(items)
     catalog["updated_at"] = _utc_now()
     catalog["skill_id"] = "yihang-idea-to-visual"
+    catalog.setdefault(
+        "description",
+        "Yihang Idea to Visual built-in visual reference library",
+    )
+    catalog.setdefault("categories", list(DEFAULT_CATEGORIES))
     catalog["stats"] = {
         "total": len(items),
         "pending_analysis": sum(1 for i in items if i.get("analysis_status") == "pending"),
@@ -308,6 +369,15 @@ def write_catalog(catalog: Dict[str, Any], output: Path) -> None:
     Raises:
         IndexError_: If writing fails.
     """
+    entries = normalize_catalog_entries(catalog)
+    catalog["items"] = entries
+    catalog["assets"] = entries
+    catalog["total_assets"] = len(entries)
+    catalog.setdefault("categories", list(DEFAULT_CATEGORIES))
+    catalog.setdefault(
+        "description",
+        "Yihang Idea to Visual built-in visual reference library",
+    )
     output.parent.mkdir(parents=True, exist_ok=True)
     tmp = output.with_suffix(output.suffix + ".tmp")
     try:

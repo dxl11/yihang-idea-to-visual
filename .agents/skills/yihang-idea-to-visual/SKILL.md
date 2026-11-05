@@ -142,9 +142,10 @@ Details: [references/title-generation.md](references/title-generation.md)
 
 1. Select **one** platform; load [assets/platform-profiles/profiles.json](assets/platform-profiles/profiles.json). Prefer live verification of sizes when network is available; never claim unverified sizes are official.
 2. Ask at most **3** visual questions that change direction; skip known facts; use defaults for non-critical gaps.
-3. Analyze theme + brand kit + reference library.
-4. Propose **3 visually distinct** cover directions (not just recolors). Styles must be content-driven (editorial, minimal, tech, artistic journal, photo narrative, infographic, big-type, etc.).
-5. Produce three full cover previews; iterate; lock cover; ask before STEP 04.
+3. Check built-in visual library [assets/visual-reference-library/catalog.json](assets/visual-reference-library/catalog.json). If `total_assets` is 0 (or `assets`/`items` empty) → **skip retrieval** and continue; never invent missing references. If assets exist → retrieve a few relevant entries only.
+4. Analyze theme + brand kit (+ real library hits when present).
+5. Propose **3 visually distinct** cover directions (not just recolors). Styles must be content-driven (editorial, minimal, tech, artistic journal, photo narrative, infographic, big-type, etc.). Do **not** change this three-direction mechanism.
+6. Produce three full cover previews; iterate; lock cover; ask before STEP 04.
 
 Image generation: use host image tools for illustration/background only when available. Always composite final title/author text via `scripts/render_pages.py`.
 
@@ -160,14 +161,15 @@ If text does not fit → **add pages**, never cut copy.
 
 Process:
 1. Paginate by semantic units (no fixed page count).
-2. Choose visual strategy from topic (tech / business / reflection / knowledge / story / data). Not every page needs imagery.
-3. Preview **three** distinct editorial styles on a representative page; user picks one.
-4. Build Design Profile (fonts, colors, margins, grid, folio, signature). Cover and body styles may differ but must stay brand-coherent.
-5. Generate full set via page JSON + `scripts/render_pages.py`. Record contiguous text fragments in `page-manifest.json` for integrity checks.
+2. Check built-in visual library `catalog.json` again. Empty catalog → skip; otherwise retrieve theme-relevant refs only. Never pretend assets exist.
+3. Choose visual strategy from topic (tech / business / reflection / knowledge / story / data). Not every page needs imagery.
+4. Preview **three** distinct editorial styles on a representative page; user picks one. Keep this three-style mechanism unchanged.
+5. Build Design Profile (fonts, colors, margins, grid, folio, signature). Cover and body styles may differ but must stay brand-coherent.
+6. Generate full set via page JSON + `scripts/render_pages.py`. Record contiguous text fragments in `page-manifest.json` for integrity checks.
 
 Templates: `editorial-minimal`, `modern-technology`, `artistic-journal` (see [assets/templates/editorial-layouts/](assets/templates/editorial-layouts/)).
 
-Details: [references/editorial-design.md](references/editorial-design.md)
+Details: [references/editorial-design.md](references/editorial-design.md), [references/reference-library.md](references/reference-library.md)
 
 ### STEP 05 — Holistic review & local edits
 

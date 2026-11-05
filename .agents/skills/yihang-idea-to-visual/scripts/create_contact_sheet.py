@@ -197,7 +197,13 @@ def main(argv: Optional[List[str]] = None) -> int:
     catalog_path = args.catalog or (args.library / "catalog.json")
     try:
         catalog = load_catalog(catalog_path)
-        items = filter_items(catalog.get("items", []), category=args.category, ids=args.ids)
+        raw_items = catalog.get("assets")
+        if not isinstance(raw_items, list):
+            raw_items = catalog.get("items", [])
+        items = filter_items(raw_items, category=args.category, ids=args.ids)
+        if not items:
+            print("No reference assets to sheet (catalog empty or filter matched nothing).")
+            return 0
         paths = create_sheets(
             args.library,
             items,

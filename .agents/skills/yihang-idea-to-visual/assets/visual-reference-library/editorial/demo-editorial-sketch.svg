@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-  <rect width="400" height="500" fill="#F4F1EA"/>
-  <rect x="40" y="40" width="320" height="36" fill="none" stroke="#1F4B99" stroke-width="4"/>
-  <line x1="40" y1="140" x2="360" y2="140" stroke="#1F4B99" stroke-width="3"/>
-  <line x1="40" y1="220" x2="360" y2="220" stroke="#1F4B99" stroke-width="3"/>
-  <text x="40" y="480" font-size="14" fill="#1F4B99">Original demo sketch — not a third-party work</text>
-</svg>

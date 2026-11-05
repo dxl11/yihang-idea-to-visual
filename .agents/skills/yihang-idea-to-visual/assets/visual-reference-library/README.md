@@ -1,66 +1,103 @@
-# Visual Reference Library
+# Visual Reference Library（内置视觉灵感参考库）
 
-Inspiration library for Skill **`yihang-idea-to-visual`**.
+这是 Skill 作者维护的 **Yihang Idea to Visual** 内置视觉灵感库，供封面设计与图文设计阶段作参考分析与特征组合，**不是**可直接粘贴进最终作品的素材包。
 
-Upload your own images. Do **not** scrape copyrighted web images into the public repository.
+## 当前状态
 
-## Accepted formats
+**素材库为空。** 本仓库只预留分类目录与空索引，尚未收录任何图片。
 
-PNG, JPG, JPEG, WEBP (also GIF/BMP/TIFF for indexing). SVG demo sketches may live here for humans, but the indexer focuses on raster formats.
+`catalog.json` 中 `total_assets` / `assets` / `items` 均为 0。空库时 Skill 必须**跳过参考库检索**，按原有设计流程继续，不得假装存在尚未上传的参考图。
 
-## Where to put files
+## 目录分类
 
-| Directory | Suggested content |
+| 目录 | 用途 |
 |---|---|
-| `editorial/` | Magazine / editorial layouts |
-| `minimalism/` | Minimal compositions |
-| `technology/` | Tech / AI aesthetics |
-| `artistic/` | Artistic / hand-feel |
-| `infographic/` | Charts / process diagrams |
-| `photography/` | Photo narrative |
-| `typography/` | Type-led posters |
-| `miscellaneous/` | Everything else |
-| `private/` | Private references (gitignored) |
+| `editorial/` | 杂志 / 编辑排版灵感 |
+| `minimalism/` | 极简构图 |
+| `technology/` | 科技 / AI 视觉语言 |
+| `artistic/` | 艺术 / 手感 / 插画气质 |
+| `infographic/` | 信息图 / 流程示意 |
+| `typography/` | 大字报 / 字体主导海报 |
+| `cover-design/` | 封面结构参考 |
+| `carousel-layout/` | 轮播分页 / 多页节奏 |
+| `photography/` | 摄影叙事 |
+| `color-palettes/` | 配色板 / 色票参考 |
+| `private/` | 私有参考（gitignore，不公开发布） |
 
-## Build / update index
+交叉分类时优先用 `tags` 标注，不必把同一文件复制到多个目录。
+
+## 如何放入图片（未来）
+
+1. 将真实图片放入对应分类目录。  
+2. 支持格式：`PNG` / `JPG` / `JPEG` / `WEBP` / `SVG`（索引脚本以光栅图为主；SVG 可人工存放）。  
+3. 为每张素材准备唯一编号（建议 `REF-0001` 起，由索引脚本自动分配亦可）。  
+4. 必须记录：`source`（来源）、`author`（作者）、`license`（授权）、`attribution`（署名要求）。  
+5. 运行索引更新 `catalog.json`。  
+6. 由具备读图能力的宿主 Agent 填写排版 / 字体 / 色彩 / 构图分析字段。
+
+## 更新 catalog.json
+
+在 Skill 根目录执行：
 
 ```bash
-python ../scripts/build_reference_index.py --library . --output catalog.json
+python scripts/build_reference_index.py --library assets/visual-reference-library --output assets/visual-reference-library/catalog.json --full
 ```
 
-Incremental by default. Use `--full` to drop missing paths.
+说明：
 
-## Contact sheets
+- 脚本会扫描分类目录中的图片，写入技术元数据（路径、尺寸、哈希、重复检测）。  
+- `assets` 与 `items` 保持同步（兼容旧字段）；`total_assets` 与 `stats.total` 反映真实数量。  
+- **不会**根据文件名虚构视觉风格分析。  
+- 空目录扫描结果仍为 0 条记录。
+
+可选联系表（有素材后）：
 
 ```bash
-python ../scripts/create_contact_sheet.py --library . --output ../../../contact-sheets --category editorial
+python scripts/create_contact_sheet.py --library assets/visual-reference-library --output contact-sheets --category editorial
 ```
 
-## Tags, source, license
+无素材时联系表脚本会正常退出并提示为空，不生成假图。
 
-Edit `catalog.json` entries (or ask the agent after visual analysis):
+## 如何分析图片
 
-- `tags`: searchable keywords
-- `source`: URL or “user upload”
-- `author`: creator name
-- `license`: `unknown` | `private` | `CC0` | `CC-BY-4.0` | `MIT` | custom
-- `attribution`: required credit text
+当宿主能读取像素时，为每条记录补充：
 
-## Delete images
+| 字段 | 内容 |
+|---|---|
+| `style_notes` | 风格气质 |
+| `layout_notes` | 版式 / 网格 |
+| `color_notes` | 色彩关系 |
+| `typography_notes` | 字体层级与字重 |
+| `composition_notes` | 构图与视觉重心 |
+| `tags` / `best_for` | 检索标签与适用场景 |
+| `analysis_status` | `pending` → 分析完成后改为实际状态 |
 
-1. Delete the file from disk.
-2. Re-run the indexer (`--full` to remove stale entries, or leave incremental `missing: true` markers).
+不能读图时：明确说明限制，保持 `analysis_status: pending`，**不要编造分析**。
 
-## Private vs public
+## 封面 / 图文阶段如何调用
 
-| Kind | Location | Git |
-|---|---|---|
-| Public / clearly licensed demos | category folders | may commit |
-| Private inspiration | `private/` | ignored |
-| Unknown license | local only | do not publish |
+1. 打开本目录的 `catalog.json`。  
+2. 若 `total_assets == 0`（或 `assets`/`items` 为空）→ **跳过检索**，直接按原有封面三方案 / 图文三方案流程设计。  
+3. 若有素材 → 按主题、`category`、`tags`、`best_for` 筛选少量相关条目。  
+4. 可多图组合参考（A 结构 + B 色彩 + C 插画语言），输出必须是原创设计。  
+5. **不得**把受版权保护的构图、Logo、角色原样搬进最终交付。
 
-Unknown-license images: internal visual analysis only — never treat as redistributable assets in final public posts without rights clearance.
+## 版权与分发
 
-## Demo assets
+- 未知授权（`license: unknown`）或私有（`private`）图片：**仅可内部视觉分析**，不得用于最终公开作品，也不得当作公开可再分发素材。  
+- 不要把未获授权的第三方图提交到公开 GitHub。  
+- 私有文件放 `private/`（已被 gitignore）。  
+- 详见仓库根目录 [ASSET-LICENSES.md](../../../../../ASSET-LICENSES.md)。
 
-Original abstract PNG samples in this repo are project-made layout/color sketches. They are **not** commercial templates and **not** third-party works.
+## 预留能力（当前不实现填充）
+
+数据结构与脚本已兼容未来扩展，**现在不必开发**：
+
+- 图片自动分类  
+- 批量视觉分析  
+- 丰富标签体系  
+- 联系表浏览  
+- 多图特征组合参考  
+- 按文章主题检索灵感  
+
+有真实素材后再逐步启用即可。

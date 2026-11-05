@@ -1,13 +1,13 @@
-# Reference library demo
+# Visual reference library (framework)
 
-The live demo assets and `catalog.json` live in:
+The built-in library lives at:
 
 `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
 
-They are original abstract PNG/SVG sketches created for Skill `yihang-idea-to-visual`, released under MIT, and are **not** third-party commercial templates.
-
-To rebuild the catalog:
+It currently ships **empty** (category folders + empty `catalog.json` only). Add real images later, then rebuild the index:
 
 ```bash
 python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py --full
 ```
+
+Empty catalogs are valid: cover/editorial stages skip retrieval and continue the normal design flow.

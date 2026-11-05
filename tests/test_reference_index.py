@@ -1,4 +1,4 @@
-"""Tests for build_reference_index and contact sheets."""
+"""Tests for build_reference_index and contact sheets (empty library framework)."""
 
 from __future__ import annotations
 
@@ -12,19 +12,39 @@ SKILL = ROOT / ".agents" / "skills" / "yihang-idea-to-visual"
 SCRIPTS = SKILL / "scripts"
 LIBRARY = SKILL / "assets" / "visual-reference-library"
 
+REQUIRED_CATEGORIES = [
+    "editorial",
+    "minimalism",
+    "technology",
+    "artistic",
+    "infographic",
+    "typography",
+    "cover-design",
+    "carousel-layout",
+    "photography",
+    "color-palettes",
+]
 
-def test_catalog_exists_and_has_items():
+
+def test_catalog_is_empty_framework():
     catalog = json.loads((LIBRARY / "catalog.json").read_text(encoding="utf-8"))
     assert catalog["skill_id"] == "yihang-idea-to-visual"
-    assert len(catalog["items"]) >= 1
-    for item in catalog["items"]:
-        assert "sha256" in item
-        assert "width" in item
-        assert "height" in item
-        assert item.get("license") in {"MIT", "unknown", "private", "CC0", "CC-BY-4.0"}
+    assert catalog["total_assets"] == 0
+    assert catalog.get("assets") == []
+    assert catalog.get("items") == []
+    for name in REQUIRED_CATEGORIES:
+        assert name in catalog["categories"]
+        assert (LIBRARY / name / ".gitkeep").is_file()
 
 
-def test_incremental_index(tmp_path: Path):
+def test_no_shipped_raster_demos():
+    rasters = list(LIBRARY.rglob("*.png")) + list(LIBRARY.rglob("*.jpg")) + list(
+        LIBRARY.rglob("*.jpeg")
+    ) + list(LIBRARY.rglob("*.webp"))
+    assert rasters == [], f"unexpected raster assets: {rasters}"
+
+
+def test_incremental_index_on_empty_library(tmp_path: Path):
     out = tmp_path / "catalog.json"
     cmd = [
         sys.executable,
@@ -38,9 +58,11 @@ def test_incremental_index(tmp_path: Path):
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=60, check=False)
     assert proc.returncode == 0, proc.stderr
     data = json.loads(out.read_text(encoding="utf-8"))
-    assert data["stats"]["total"] >= 1
+    assert data["stats"]["total"] == 0
+    assert data["total_assets"] == 0
+    assert data["assets"] == []
+    assert data["items"] == []
 
-    # Incremental second run should succeed
     proc2 = subprocess.run(
         [
             sys.executable,
@@ -58,7 +80,7 @@ def test_incremental_index(tmp_path: Path):
     assert proc2.returncode == 0, proc2.stderr
 
 
-def test_contact_sheet(tmp_path: Path):
+def test_contact_sheet_empty_catalog_exits_clean(tmp_path: Path):
     out = tmp_path / "sheets"
     proc = subprocess.run(
         [
@@ -81,9 +103,13 @@ def test_contact_sheet(tmp_path: Path):
         check=False,
     )
     assert proc.returncode == 0, proc.stderr
-    sheets = list(out.glob("contact-sheet-*.png"))
-    assert sheets
-    from PIL import Image
+    assert "No reference assets" in (proc.stdout + proc.stderr)
+    assert list(out.glob("contact-sheet-*.png")) == []
 
-    with Image.open(sheets[0]) as img:
-        img.verify()
+
+def test_skill_documents_empty_library_skip():
+    skill = (SKILL / "SKILL.md").read_text(encoding="utf-8")
+    ref = (SKILL / "references" / "reference-library.md").read_text(encoding="utf-8")
+    combined = skill + "\n" + ref
+    assert "total_assets" in combined or "skip" in combined.lower()
+    assert "visual-reference-library" in skill

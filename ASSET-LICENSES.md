@@ -66,10 +66,9 @@ PNG covers, editorial pages, and ZIP packages created for a user project belong 
 
 ## 5. Demo Assets in This Repository
 
-Original demo assets under:
+The built-in visual reference library under
 `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
-
-are created for this project as abstract layout/color samples. They are **not** commercial templates and are **not** representations of third-party works. They are released under MIT unless a file-level notice says otherwise.
+currently ships **empty** (directories + empty `catalog.json` only). Do not commit third-party scraped images there.
 
 README banner `docs/assets/readme-banner.png` is an original darkroom-theme illustration generated for this project (MIT). Prompt provenance is embedded in the PNG and mirrored in `docs/assets/readme-banner.png.json`.
 

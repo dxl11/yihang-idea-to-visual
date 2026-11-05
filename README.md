@@ -230,11 +230,25 @@ python -m pip install "Pillow>=10"
 
 目录：`.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
 
-- 支持 PNG / JPG / JPEG / WEBP 等常见格式  
-- 按分类目录存放；私有图放入 `private/`（gitignore）  
-- 索引：`scripts/build_reference_index.py`  
-- 联系表：`scripts/create_contact_sheet.py`  
-- 未知授权图片仅可内部视觉分析，不得默认公开再分发  
+这是 Skill 作者维护的**内置视觉灵感参考库**。当前阶段**尚未收录图片**，只预留分类目录与空 `catalog.json`（`total_assets: 0`）。
+
+### 当前如何使用（空库）
+
+- 进入封面 / 图文设计时会检查 `catalog.json`。  
+- 若为空 → **跳过参考库检索**，仍按原有「三套封面 / 三套图文」流程设计。  
+- **不得**假装存在尚未上传的参考图。
+
+### 以后如何添加素材
+
+1. 将 PNG / JPG / JPEG / WEBP / SVG 放入对应分类目录（`editorial/`、`cover-design/`、`carousel-layout/`、`color-palettes/` 等）。  
+2. 为每张图准备唯一编号，并记录来源、作者、授权。  
+3. 运行：`python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py --full`  
+4. 由可读图的 Agent 补充排版 / 字体 / 色彩 / 构图分析。  
+5. 交叉分类用 `tags`，不必复制同一文件到多个目录。  
+
+私有或未知授权图片放入 `private/`（gitignore）；仅可内部分析，不得直接用于最终作品或公开再分发。
+
+索引 / 联系表：`build_reference_index.py` · `create_contact_sheet.py`  
 
 详见 [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md)。
 

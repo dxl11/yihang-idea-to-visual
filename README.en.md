@@ -230,11 +230,25 @@ Do not skip unconfirmed stages (Thought Reviewer may be skipped when the user ex
 
 Path: `.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/`
 
-- Accepts PNG / JPG / JPEG / WEBP and other common rasters  
-- Store by category; keep private files under `private/` (gitignored)  
-- Index with `scripts/build_reference_index.py`  
-- Contact sheets via `scripts/create_contact_sheet.py`  
-- Unknown-license images: internal analysis only—never default to public redistribution  
+Built-in inspiration library maintained by the skill author. It is currently **empty**—only category folders and an empty `catalog.json` (`total_assets: 0`).
+
+### Empty-library behavior
+
+- Cover and editorial stages check `catalog.json`.  
+- If empty → **skip retrieval** and keep the existing three cover / three editorial directions.  
+- Never pretend assets exist before upload.
+
+### Adding assets later
+
+1. Place PNG / JPG / JPEG / WEBP / SVG files into category folders (`editorial/`, `cover-design/`, `carousel-layout/`, `color-palettes/`, …).  
+2. Record a unique id plus source, author, and license.  
+3. Run: `python .agents/skills/yihang-idea-to-visual/scripts/build_reference_index.py --full`  
+4. Let a vision-capable agent fill layout / type / color / composition notes.  
+5. Prefer `tags` for cross-category links instead of duplicating files.  
+
+Keep private / unknown-license files under `private/` (gitignored)—internal analysis only; never ship into final public posts.
+
+Index / contact sheets: `build_reference_index.py` · `create_contact_sheet.py`  
 
 See [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
 
