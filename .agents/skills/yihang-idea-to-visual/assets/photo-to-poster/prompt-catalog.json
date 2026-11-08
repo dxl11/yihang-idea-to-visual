@@ -1,0 +1,164 @@
+{
+  "version": "1.0",
+  "skill_id": "yihang-idea-to-visual",
+  "module": "photo-to-poster",
+  "canvas": {
+    "aspect": "3:4",
+    "width": 1080,
+    "height": 1440
+  },
+  "rules": {
+    "one_photo_one_poster": true,
+    "forbid_collage": true,
+    "forbid_multi_photo_single_job": true,
+    "top_uses_source_pixels": true,
+    "bottom_is_generated_art": true
+  },
+  "base_prompt": "prompts/base-prompt.md",
+  "styles": [
+    {
+      "id": "01-minimal-abstract",
+      "name_en": "Minimal Abstract",
+      "name_zh": "极简几何抽象海报",
+      "category": "minimal-abstract",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["architecture", "product", "portrait", "still-life"],
+      "core_features": ["geometric blocks", "large negative space", "2-4 restrained colors"],
+      "prompt_path": "prompts/01-minimal-abstract.md",
+      "use_cases": ["international studio look", "architecture poster", "gallery poster"]
+    },
+    {
+      "id": "02-linocut-travel",
+      "name_en": "Linocut Travel",
+      "name_zh": "油毡版画旅行手记",
+      "category": "print-travel",
+      "ratio_top": 0.45,
+      "ratio_bottom": 0.55,
+      "recommended_photo_types": ["travel", "landscape", "street", "architecture"],
+      "core_features": ["linocut / stencil", "torn paper edge", "misregistration"],
+      "prompt_path": "prompts/02-linocut-travel.md",
+      "use_cases": ["travel journal", "indie magazine", "poetic diptych"]
+    },
+    {
+      "id": "03-raster-distortion",
+      "name_en": "Raster Distortion",
+      "name_zh": "光栅线场实验海报",
+      "category": "experimental",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["portrait", "sculpture", "architecture", "product"],
+      "core_features": ["parallel line field", "controlled distortion", "optical push"],
+      "prompt_path": "prompts/03-raster-distortion.md",
+      "use_cases": ["experimental art", "optical illusion show"]
+    },
+    {
+      "id": "04-swiss-editorial",
+      "name_en": "Swiss Editorial",
+      "name_zh": "瑞士国际主义编辑设计",
+      "category": "editorial-modernist",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["architecture", "product", "portrait", "still-life"],
+      "core_features": ["modular grid", "geometric slices", "black / ivory / accent"],
+      "prompt_path": "prompts/04-swiss-editorial.md",
+      "use_cases": ["design magazine", "modernist archive"]
+    },
+    {
+      "id": "05-cyanotype-blueprint",
+      "name_en": "Cyanotype Blueprint",
+      "name_zh": "蓝晒艺术蓝图",
+      "category": "cyanotype",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["architecture", "plant", "object", "portrait"],
+      "core_features": ["indigo / prussian blue", "structure lines", "cream negative space"],
+      "prompt_path": "prompts/05-cyanotype-blueprint.md",
+      "use_cases": ["science-art experiment", "blueprint aesthetic"]
+    },
+    {
+      "id": "06-risograph-print",
+      "name_en": "Risograph Print",
+      "name_zh": "复古孔版印刷",
+      "category": "risograph",
+      "ratio_top": 0.45,
+      "ratio_bottom": 0.55,
+      "recommended_photo_types": ["portrait", "street", "product", "poster-subject"],
+      "core_features": ["2-3 inks", "halftone", "misregistration"],
+      "prompt_path": "prompts/06-risograph-print.md",
+      "use_cases": ["retro publication", "screen-print look"]
+    },
+    {
+      "id": "07-topographic-lines",
+      "name_en": "Topographic Lines",
+      "name_zh": "地形等高线艺术",
+      "category": "topographic",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["landscape", "architecture", "sculpture", "portrait"],
+      "core_features": ["contour lines", "density rhythm", "natural palette"],
+      "prompt_path": "prompts/07-topographic-lines.md",
+      "use_cases": ["landform study", "minimal spatial design"]
+    },
+    {
+      "id": "08-paper-cut-relief",
+      "name_en": "Paper Cut Relief",
+      "name_zh": "纸雕浮雕艺术",
+      "category": "paper-cut",
+      "ratio_top": 0.45,
+      "ratio_bottom": 0.55,
+      "recommended_photo_types": ["portrait", "architecture", "plant", "object"],
+      "core_features": ["layered cut paper", "fiber texture", "soft shadow"],
+      "prompt_path": "prompts/08-paper-cut-relief.md",
+      "use_cases": ["paper-art exhibition", "craft print"]
+    },
+    {
+      "id": "09-naturalist-specimen",
+      "name_en": "Naturalist Specimen",
+      "name_zh": "自然博物志标本海报",
+      "category": "naturalist",
+      "ratio_top": 0.45,
+      "ratio_bottom": 0.55,
+      "recommended_photo_types": ["plant", "animal", "object", "architecture"],
+      "core_features": ["specimen line work", "cream paper", "restrained wash"],
+      "prompt_path": "prompts/09-naturalist-specimen.md",
+      "use_cases": ["museum archive", "art publication"]
+    },
+    {
+      "id": "10-technical-line-art",
+      "name_en": "Technical Line Art",
+      "name_zh": "技术线描与结构图",
+      "category": "technical",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["architecture", "object", "machine", "portrait"],
+      "core_features": ["structure lines", "navy / charcoal", "precise contour"],
+      "prompt_path": "prompts/10-technical-line-art.md",
+      "use_cases": ["architecture studio", "design archive"]
+    },
+    {
+      "id": "11-ink-wash",
+      "name_en": "Ink Wash",
+      "name_zh": "东方水墨艺术",
+      "category": "ink-wash",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["landscape", "architecture", "plant", "object"],
+      "core_features": ["ink wash", "large emptiness", "recognizable silhouette"],
+      "prompt_path": "prompts/11-ink-wash.md",
+      "use_cases": ["collectible print", "modern eastern exhibition"]
+    },
+    {
+      "id": "12-photogravure",
+      "name_en": "Photogravure",
+      "name_zh": "复古铜版摄影海报",
+      "category": "photogravure",
+      "ratio_top": 0.5,
+      "ratio_bottom": 0.5,
+      "recommended_photo_types": ["architecture", "portrait", "landscape", "archive-subject"],
+      "core_features": ["hatching", "sepia-grey scale", "paper grain"],
+      "prompt_path": "prompts/12-photogravure.md",
+      "use_cases": ["historical archive feel", "museum publication"]
+    }
+  ]
+}

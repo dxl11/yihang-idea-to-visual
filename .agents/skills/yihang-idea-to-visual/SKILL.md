@@ -1,17 +1,17 @@
 ---
 name: yihang-idea-to-visual
 description: >-
-  Turns a raw idea into a branded social-media image carousel (cover + body PNGs + ZIP).
-  Runs Thought Reviewer before polish, then guides article editing, title creation, cover
-  design, editorial pagination, visual review, and export while protecting locked article
-  text. Use when the user mentions Idea to Visual, yihang-idea-to-visual, Thought Reviewer,
-  思想审阅, personal IP graphics, 图文创作, 封面设计, 小红书轮播, carousel PNG export, or
-  wants to turn notes into publishable visuals.
+  Turns a raw idea into a branded social-media image carousel (cover + body PNGs + ZIP),
+  and can run Photo-to-Poster (photo-driven 3:4 art posters). Runs Thought Reviewer before
+  polish, then guides article editing, titles, cover, editorial pagination, review, and
+  export while protecting locked article text. Use when the user mentions Idea to Visual,
+  yihang-idea-to-visual, Thought Reviewer, Photo-to-Poster, 照片海报, 思想审阅, 图文创作,
+  封面设计, 小红书轮播, carousel PNG export, or wants notes turned into publishable visuals.
 license: MIT
 compatibility: Requires Python 3.10+ with Pillow for local PNG rendering; optional host image-generation tools when available.
 metadata:
   author: yihang
-  version: "1.2.0"
+  version: "1.3.0"
   product: Idea to Visual
   product_alias: Yihang Idea to Visual
 ---
@@ -29,6 +29,7 @@ Core promise: the user focuses on thinking and expression; this skill handles th
 
 - User provides raw notes, drafts, voice transcripts, or scattered opinions and wants publishable carousel graphics.
 - User asks to pressure-test an idea before writing (Thought Reviewer / 思想审阅).
+- User uploads photos for artistic 3:4 posters (Photo-to-Poster / 照片艺术海报).
 - User asks for cover + multi-page editorial PNGs for one social platform.
 - User wants personal-brand visual consistency across a post.
 
@@ -45,6 +46,7 @@ Core promise: the user focuses on thinking and expression; this skill handles th
 9. Unknown-license reference images: internal analysis only, never treat as redistributable.
 10. Do not invent citations or ship copyrighted full books in the public repo. Prefer method cards; mark unverified claims as uncertain.
 11. Thought Reviewer may be **skipped** when the user asks to go straight to polish. Never force multi-round debate.
+12. Photo-to-Poster: **one photo → one poster**; never collage/grid/merge photos; top band uses real source pixels; default canvas 1080×1440 (3:4).
 
 ## Progressive references
 
@@ -54,6 +56,7 @@ Load only what the current stage needs:
 |---|---|
 | Thought review | [references/thought-reviewer.md](references/thought-reviewer.md) |
 | Thinking methods | [references/thinking-frameworks.md](references/thinking-frameworks.md) |
+| Photo-to-Poster | [references/photo-to-poster.md](references/photo-to-poster.md) |
 | Article editing | [references/content-editing.md](references/content-editing.md) |
 | Titles | [references/title-generation.md](references/title-generation.md) |
 | Platform / size | [references/platform-profiles.md](references/platform-profiles.md) |
@@ -204,6 +207,18 @@ Checks must cover existence, openability, size/aspect, mojibake, overflow, **exa
 
 Details: [references/quality-and-export.md](references/quality-and-export.md)
 
+## MODULE — Photo-to-Poster（照片艺术海报）
+
+Alternate path when the user uploads photos for art posters (does **not** replace the carousel STEPs above).
+
+1. Inspect each photo (`scripts/photo_to_poster/inspect_photo.py`); host vision adds subject notes.
+2. Recommend 3 of 12 styles from [assets/photo-to-poster/prompt-catalog.json](assets/photo-to-poster/prompt-catalog.json); user picks apply-all or per-photo.
+3. For **each** photo separately: combine [base-prompt.md](assets/photo-to-poster/prompts/base-prompt.md) + recipe; generate art with host image tool if available (disclose if not); never batch multiple photos into one generation call.
+4. Compose with `compose_poster.py` — top = original pixels, bottom = art; ratio from catalog.
+5. Validate + export ZIP (`validate_poster.py`, `export_posters.py`). Local output under `.idea-to-visual/photo-to-poster-output/` (gitignored).
+
+Details: [references/photo-to-poster.md](references/photo-to-poster.md)
+
 ## Helper scripts
 
 Run from skill root `.agents/skills/yihang-idea-to-visual/` (or pass absolute paths).
@@ -216,6 +231,10 @@ Run from skill root `.agents/skills/yihang-idea-to-visual/` (or pass absolute pa
 | `scripts/render_pages.py` | JSON layout → PNG (text + shapes + images) |
 | `scripts/validate_project.py` | Integrity / size / mapping QA |
 | `scripts/package_export.py` | Ordered PNGs + ZIP + manifest |
+| `scripts/photo_to_poster/inspect_photo.py` | Technical inspect of one source photo |
+| `scripts/photo_to_poster/compose_poster.py` | Compose top photo + bottom art → 3:4 PNG |
+| `scripts/photo_to_poster/validate_poster.py` | Size / aspect / openability QA |
+| `scripts/photo_to_poster/export_posters.py` | Independent PNGs → ZIP + manifest |
 
 Each script supports `--help`.
 
@@ -246,6 +265,7 @@ Details: [references/brand-identity.md](references/brand-identity.md)
 | No image tool | Programmatic backgrounds + demo/reference assets; disclose limit |
 | Network size / fact checks | Prefer live sources when online; otherwise label uncertainty |
 | Thought library retrieval | Method cards + catalog; never fabricate page citations |
+| Photo-to-Poster | Available; art generation only if host image tool exists; compose/validate always local |
 
 ## Resume checklist
 

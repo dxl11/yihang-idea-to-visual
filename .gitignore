@@ -46,6 +46,7 @@ Desktop.ini
 
 # Local project data (private user content)
 .idea-to-visual/
+photo-to-poster-output/
 *.local.json
 *.local.yaml
 

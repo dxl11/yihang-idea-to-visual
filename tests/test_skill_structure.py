@@ -16,6 +16,7 @@ SKILL_ID = "yihang-idea-to-visual"
 REFERENCE_FILES = [
     "thought-reviewer.md",
     "thinking-frameworks.md",
+    "photo-to-poster.md",
     "content-editing.md",
     "title-generation.md",
     "platform-profiles.md",
@@ -34,6 +35,13 @@ SCRIPTS = [
     "render_pages.py",
     "validate_project.py",
     "package_export.py",
+]
+
+PHOTO_TO_POSTER_SCRIPTS = [
+    "photo_to_poster/inspect_photo.py",
+    "photo_to_poster/compose_poster.py",
+    "photo_to_poster/validate_poster.py",
+    "photo_to_poster/export_posters.py",
 ]
 
 SCHEMAS = [
@@ -112,10 +120,31 @@ def test_references_exist_and_linked():
 def test_scripts_and_schemas_exist():
     for name in SCRIPTS:
         assert (SKILL_DIR / "scripts" / name).is_file()
+    for name in PHOTO_TO_POSTER_SCRIPTS:
+        assert (SKILL_DIR / "scripts" / name).is_file()
     for name in SCHEMAS:
         path = SKILL_DIR / "schemas" / name
         assert path.is_file()
         json.loads(path.read_text(encoding="utf-8"))
+
+
+@pytest.mark.parametrize("script", PHOTO_TO_POSTER_SCRIPTS)
+def test_photo_to_poster_script_help(script):
+    import subprocess
+    import sys
+
+    proc = subprocess.run(
+        [sys.executable, str(SKILL_DIR / "scripts" / script), "--help"],
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=30,
+        check=False,
+    )
+    assert proc.returncode == 0
+    combined = f"{proc.stdout or ''}{proc.stderr or ''}".lower()
+    assert "usage:" in combined
 
 
 def test_no_duplicate_cursor_skills_copy():

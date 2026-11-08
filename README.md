@@ -61,6 +61,7 @@
 
 - Thought Reviewer：思想审阅、多轮对话、可跳过
 - 七阶段门禁工作流（思想审阅 → 文章 → 标题 → 封面 → 图文 → 审核 → 交付）
+- **Photo-to-Poster**：照片驱动艺术海报（一张照片一张独立 3:4 PNG；上半区原图像素合成）
 - 锁定文章后的原文完整性保护（禁止擅自删改/总结）
 - 平台配置与 Skill 指令分离
 - 思想知识库（方法卡片检索）与视觉参考库
@@ -251,6 +252,19 @@ python -m pip install "Pillow>=10"
 索引 / 联系表：`build_reference_index.py` · `create_contact_sheet.py`  
 
 详见 [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md)。
+
+## 8.5 Photo-to-Poster（照片艺术海报）
+
+上传一张或多张照片，按 12 种艺术风格 Recipe 逐张生成独立竖版海报（默认 **1080×1440 / 3:4**）。
+
+硬规则：一张照片一张海报；禁止拼贴/九宫格/多图合并；上半区用原图像素，下半区才是艺术生成；多张照片即使同风格也要分别调用生成任务。
+
+流程：分析照片 → 推荐 3 个风格 → 用户选择（整批同风格或单张覆盖）→ 逐张生成与合成 → 单张重生不影响其他 → ZIP 打包。
+
+资源：`assets/photo-to-poster/` · 说明：[photo-to-poster.md](.agents/skills/yihang-idea-to-visual/references/photo-to-poster.md)  
+脚本：`scripts/photo_to_poster/inspect_photo.py` · `compose_poster.py` · `validate_poster.py` · `export_posters.py`  
+本地输出：`.idea-to-visual/photo-to-poster-output/`（不提交公开仓库）  
+图像生成依赖宿主可用工具；不可用时须明确说明，不得虚构 API。
 
 ## 9. 个人品牌视觉系统
 

@@ -61,6 +61,7 @@ Built for creators, researchers, and operators who publish branded carousels. Ea
 
 - Thought Reviewer: idea critique, multi-turn dialogue, and optional skip
 - Seven gated stages (thought review → article → title → cover → editorial → review → export)
+- **Photo-to-Poster**: photo-driven art posters (one photo → one independent 3:4 PNG; top band uses source pixels)
 - Locked-article integrity protection (no silent rewrite/summary/deletion)
 - Platform profiles separated from skill instructions
 - Thought library (method-card retrieval) plus visual reference library
@@ -251,6 +252,19 @@ Keep private / unknown-license files under `private/` (gitignored)—internal an
 Index / contact sheets: `build_reference_index.py` · `create_contact_sheet.py`  
 
 See [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
+
+## 8.5 Photo-to-Poster
+
+Upload one or more photos and generate independent vertical posters using 12 art-style recipes (default **1080×1440 / 3:4**).
+
+Hard rules: one photo → one poster; no collage/grid/merge; top band is real source pixels; bottom band is generated art; even with a shared style, each photo is a separate generation job.
+
+Flow: inspect → recommend 3 styles → user picks (batch or per-photo) → generate & compose one-by-one → single regenerate without touching others → ZIP.
+
+Assets: `assets/photo-to-poster/` · Guide: [photo-to-poster.md](.agents/skills/yihang-idea-to-visual/references/photo-to-poster.md)  
+Scripts: `inspect_photo.py` · `compose_poster.py` · `validate_poster.py` · `export_posters.py`  
+Local output: `.idea-to-visual/photo-to-poster-output/` (not committed)  
+Image generation depends on host tools; disclose limits—never invent APIs.
 
 ## 9. Personal brand visual system
 

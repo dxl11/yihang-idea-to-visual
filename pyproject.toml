@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "yihang-idea-to-visual"
-version = "1.2.2"
+version = "1.3.0"
 description = "Yihang Idea to Visual — Agent Skill with Thought Reviewer that turns raw ideas into branded social media image carousels."
 readme = "README.md"
 requires-python = ">=3.10"

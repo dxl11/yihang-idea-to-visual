@@ -5,6 +5,13 @@ All notable changes to **Idea to Visual** / Skill `yihang-idea-to-visual` are do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] — 2026-11-06
+
+### Added
+- Photo-to-Poster module: 12 style recipes, base prompt, `prompt-catalog.json`, compose/inspect/validate/export scripts.
+- One-photo-one-poster hard rules; top band uses original pixels via Pillow; default 1080×1440 (3:4).
+- Bilingual README section 8.5 and `references/photo-to-poster.md`.
+
 ## [1.2.2] — 2026-11-05
 
 ### Changed
