@@ -31,6 +31,7 @@ REFERENCE_FILES = [
 SCRIPTS = [
     "build_thought_index.py",
     "build_reference_index.py",
+    "retrieve_cover_references.py",
     "create_contact_sheet.py",
     "render_pages.py",
     "validate_project.py",

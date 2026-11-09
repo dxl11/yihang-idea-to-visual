@@ -5,6 +5,18 @@ All notable changes to **Idea to Visual** / Skill `yihang-idea-to-visual` are do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] — 2026-11-09
+
+### Changed
+- STEP 03 cover flow is asset-driven: retrieve → verify openable images → pass native image references into the host image tool when matched; disclose empty / no-match branches honestly.
+- `references/cover-design.md` and `reference-library.md` document STEP03-A…G; path-in-prompt alone is forbidden as “loaded”.
+
+### Added
+- `scripts/retrieve_cover_references.py` with modes `empty` / `matched` / `no_match`.
+- `assets/templates/cover-prompts/cover-generation.md`.
+- Optional catalog analysis fields: `visual_hierarchy`, `whitespace_notes`, `graphic_language`, `use_cases`.
+- Tests in `tests/test_cover_references.py`.
+
 ## [1.3.0] — 2026-11-06
 
 ### Added

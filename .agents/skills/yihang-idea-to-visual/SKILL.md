@@ -11,7 +11,7 @@ license: MIT
 compatibility: Requires Python 3.10+ with Pillow for local PNG rendering; optional host image-generation tools when available.
 metadata:
   author: yihang
-  version: "1.3.0"
+  version: "1.3.1"
   product: Idea to Visual
   product_alias: Yihang Idea to Visual
 ---
@@ -141,16 +141,16 @@ Details: [references/content-editing.md](references/content-editing.md)
 
 Details: [references/title-generation.md](references/title-generation.md)
 
-### STEP 03 — Cover design
+### STEP 03 — Cover design（素材驱动）
 
 1. Select **one** platform; load [assets/platform-profiles/profiles.json](assets/platform-profiles/profiles.json). Prefer live verification of sizes when network is available; never claim unverified sizes are official.
 2. Ask at most **3** visual questions that change direction; skip known facts; use defaults for non-critical gaps.
-3. Check built-in visual library [assets/visual-reference-library/catalog.json](assets/visual-reference-library/catalog.json). If `total_assets` is 0 (or `assets`/`items` empty) → **skip retrieval** and continue; never invent missing references. If assets exist → retrieve a few relevant entries only.
-4. Analyze theme + brand kit (+ real library hits when present).
-5. Propose **3 visually distinct** cover directions (not just recolors). Styles must be content-driven (editorial, minimal, tech, artistic journal, photo narrative, infographic, big-type, etc.). Do **not** change this three-direction mechanism.
-6. Produce three full cover previews; iterate; lock cover; ask before STEP 04.
+3. **Retrieve then load** built-in visuals via `scripts/retrieve_cover_references.py` + [catalog.json](assets/visual-reference-library/catalog.json). Modes: `empty` / `no_match` / `matched`. Path-in-prompt ≠ loaded. When `matched`, pass verified absolute paths into the host image tool’s native reference input (e.g. `reference_image_paths`); never invent refs.
+4. Analyze theme + brand kit + **pixel-level** design language of loaded refs (or disclose no-ref branch).
+5. Propose **3 structurally distinct** cover directions (not recolors). Each logs REF-ids used + borrowed language. Content-driven styles; keep the three-direction mechanism.
+6. Produce three full cover previews; iterate; lock cover; ask before STEP 04. Do not alter locked article/title.
 
-Image generation: use host image tools for illustration/background only when available. Always composite final title/author text via `scripts/render_pages.py`.
+Image generation: host tool for illustration/background **with** real refs when matched; always composite final title/author text via `scripts/render_pages.py`. Brief: [assets/templates/cover-prompts/cover-generation.md](assets/templates/cover-prompts/cover-generation.md).
 
 Details: [references/cover-design.md](references/cover-design.md), [references/reference-library.md](references/reference-library.md), [references/brand-identity.md](references/brand-identity.md)
 
@@ -227,6 +227,7 @@ Run from skill root `.agents/skills/yihang-idea-to-visual/` (or pass absolute pa
 |---|---|
 | `scripts/build_thought_index.py` | Scan thought library → incremental `catalog.json` |
 | `scripts/build_reference_index.py` | Scan visual library → incremental `catalog.json` |
+| `scripts/retrieve_cover_references.py` | STEP 03: retrieve + verify openable cover refs |
 | `scripts/create_contact_sheet.py` | Thumbnail contact sheets with IDs |
 | `scripts/render_pages.py` | JSON layout → PNG (text + shapes + images) |
 | `scripts/validate_project.py` | Integrity / size / mapping QA |

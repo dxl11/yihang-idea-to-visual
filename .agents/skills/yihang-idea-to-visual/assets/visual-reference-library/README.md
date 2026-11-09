@@ -6,7 +6,7 @@
 
 **素材库为空。** 本仓库只预留分类目录与空索引，尚未收录任何图片。
 
-`catalog.json` 中 `total_assets` / `assets` / `items` 均为 0。空库时 Skill 必须**跳过参考库检索**，按原有设计流程继续，不得假装存在尚未上传的参考图。
+`catalog.json` 中 `total_assets` / `assets` / `items` 均为 0。空库时封面流程必须**明示无图参考**，可按品牌与封面规则继续三方案设计，不得假装已加载参考图。
 
 ## 目录分类
 
@@ -76,11 +76,24 @@ python scripts/create_contact_sheet.py --library assets/visual-reference-library
 
 ## 封面 / 图文阶段如何调用
 
-1. 打开本目录的 `catalog.json`。  
-2. 若 `total_assets == 0`（或 `assets`/`items` 为空）→ **跳过检索**，直接按原有封面三方案 / 图文三方案流程设计。  
-3. 若有素材 → 按主题、`category`、`tags`、`best_for` 筛选少量相关条目。  
-4. 可多图组合参考（A 结构 + B 色彩 + C 插画语言），输出必须是原创设计。  
-5. **不得**把受版权保护的构图、Logo、角色原样搬进最终交付。
+封面（STEP 03）必须走素材驱动流程：
+
+```bash
+python scripts/retrieve_cover_references.py \
+  --library assets/visual-reference-library \
+  --query "<主题 标签 气质>" \
+  --limit 3 \
+  --output <project>/design/cover-ref-manifest.json
+```
+
+1. 打开本目录的 `catalog.json`，并运行上述检索脚本。  
+2. 若模式为 `empty` → **明确告知无内置参考图**，可仅用品牌规范与封面规则继续；不得假装已加载图片。  
+3. 若模式为 `no_match` → 告知无合适匹配；经用户知情后可无图参考继续，不得虚构匹配。  
+4. 若模式为 `matched` → 必须用宿主图像工具的**原生图片参考输入**传入已验证的 `absolute_path`（例如 Cursor `GenerateImage.reference_image_paths`）。只把路径写进 Prompt ≠ 已加载。  
+5. 可多图组合参考（A 结构 + B 色彩 + C 插画语言），输出必须是原创设计；每个封面方案记录所用 `REF-*`。  
+6. **不得**把受版权保护的构图、Logo、角色原样搬进最终交付。  
+
+图文（STEP 04）在空库时可跳过检索；有素材时同样禁止路径伪装。
 
 ## 版权与分发
 

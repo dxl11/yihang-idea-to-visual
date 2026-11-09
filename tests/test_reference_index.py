@@ -107,9 +107,11 @@ def test_contact_sheet_empty_catalog_exits_clean(tmp_path: Path):
     assert list(out.glob("contact-sheet-*.png")) == []
 
 
-def test_skill_documents_empty_library_skip():
+def test_skill_documents_empty_library_and_retrieval():
     skill = (SKILL / "SKILL.md").read_text(encoding="utf-8")
     ref = (SKILL / "references" / "reference-library.md").read_text(encoding="utf-8")
     combined = skill + "\n" + ref
-    assert "total_assets" in combined or "skip" in combined.lower()
     assert "visual-reference-library" in skill
+    assert "retrieve_cover_references.py" in combined
+    assert "empty" in combined.lower()
+    assert "image_reference" in combined.lower() or "reference_image" in combined.lower()

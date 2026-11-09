@@ -220,7 +220,7 @@ python -m pip install "Pillow>=10"
 0. **STEP 00 Thought Reviewer** — 理解观点、多视角审阅、可选多轮对话；可跳过。  
 1. **STEP 01 思想整理与文章润色** — 保留作者立场与表达习惯，确认后锁定文章。  
 2. **STEP 02 标题创作** — 基于锁定文章给出 5 个差异化标题方向。  
-3. **STEP 03 封面设计** — 选择单一平台；至多 3 个关键视觉问题；3 套结构差异封面预览。  
+3. **STEP 03 封面设计** — 选定平台；最多 3 个视觉问题；**先检索并真实加载**内置视觉库（空库须明示无图参考），再出三个结构不同的封面；中文标题用 `render_pages.py` 合成。  
 4. **STEP 04 图文设计** — 按语义分页；三套正文风格预览后批量生成；文字放不下就加页，不删文。  
 5. **STEP 05 整体审核与局部修改** — 缩略图总览；单页/多页/全局修改；改文必须回到文章阶段。  
 6. **STEP 06 质量检查与最终交付** — 校验通过后输出 `00-cover.png`、`01-page.png`… 与 `final-export.zip`。
@@ -235,8 +235,9 @@ python -m pip install "Pillow>=10"
 
 ### 当前如何使用（空库）
 
-- 进入封面 / 图文设计时会检查 `catalog.json`。  
-- 若为空 → **跳过参考库检索**，仍按原有「三套封面 / 三套图文」流程设计。  
+- 封面 STEP 03 必须运行 `retrieve_cover_references.py` 检索并验真。  
+- 空库 → **明示无图参考**，可仅用品牌规范与封面规则继续三方案设计。  
+- 有匹配 → 将已验证绝对路径传入宿主图像工具原生参考输入（路径写进 Prompt ≠ 已加载）。  
 - **不得**假装存在尚未上传的参考图。
 
 ### 以后如何添加素材
@@ -249,7 +250,7 @@ python -m pip install "Pillow>=10"
 
 私有或未知授权图片放入 `private/`（gitignore）；仅可内部分析，不得直接用于最终作品或公开再分发。
 
-索引 / 联系表：`build_reference_index.py` · `create_contact_sheet.py`  
+索引 / 检索 / 联系表：`build_reference_index.py` · `retrieve_cover_references.py` · `create_contact_sheet.py`  
 
 详见 [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md)。
 

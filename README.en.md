@@ -220,7 +220,7 @@ See [thought-library/README.md](.agents/skills/yihang-idea-to-visual/assets/thou
 0. **STEP 00 — Thought Reviewer** — Understand the claim, multi-lens review, optional dialogue; skippable.  
 1. **STEP 01 — Thought organization & polish** — Preserve stance and voice; lock on confirmation.  
 2. **STEP 02 — Titles** — Offer five meaningfully different directions from the locked article.  
-3. **STEP 03 — Cover** — Pick one platform; ask ≤3 decisive visual questions; show three structurally distinct cover previews.  
+3. **STEP 03 — Cover** — Pick one platform; ask ≤3 visual questions; **retrieve and actually load** built-in visual refs (disclose when empty); then three structurally distinct covers; CJK title via `render_pages.py`.  
 4. **STEP 04 — Editorial** — Semantic pagination; three body-style previews; batch render; add pages instead of cutting copy.  
 5. **STEP 05 — Review** — Thumbnails; single/multi/global edits; copy changes require returning to STEP 01.  
 6. **STEP 06 — QA & delivery** — Validate, then emit `00-cover.png`, `01-page.png`, … and `final-export.zip`.
@@ -235,8 +235,9 @@ Built-in inspiration library maintained by the skill author. It is currently **e
 
 ### Empty-library behavior
 
-- Cover and editorial stages check `catalog.json`.  
-- If empty → **skip retrieval** and keep the existing three cover / three editorial directions.  
+- Cover STEP 03 must run `retrieve_cover_references.py` to retrieve and verify files.  
+- Empty → **disclose no image refs**; continue three cover directions with brand + cover rules only.  
+- Matched → pass verified absolute paths into the host image tool’s native reference input (path-in-prompt ≠ loaded).  
 - Never pretend assets exist before upload.
 
 ### Adding assets later
@@ -249,7 +250,7 @@ Built-in inspiration library maintained by the skill author. It is currently **e
 
 Keep private / unknown-license files under `private/` (gitignored)—internal analysis only; never ship into final public posts.
 
-Index / contact sheets: `build_reference_index.py` · `create_contact_sheet.py`  
+Index / retrieve / contact sheets: `build_reference_index.py` · `retrieve_cover_references.py` · `create_contact_sheet.py`  
 
 See [visual-reference-library/README.md](.agents/skills/yihang-idea-to-visual/assets/visual-reference-library/README.md).
 
